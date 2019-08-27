@@ -2,7 +2,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><i class="fa fa-bars"></i></button><a href="http://pisignage.com" target="_self" class="navbar-brand"><img src="app/img/pisignage-logo.png" height="32px"/></a>
+      <button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><i class="fa fa-bars"></i></button><!--a href="http://pisignage.com" target="_self" class="navbar-brand"--><img src="app/img/logo.png" height="50px"/><!--/a-->
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul style="margin-left:20px;" class="nav navbar-nav">
@@ -12,7 +12,7 @@
       </ul>
       <button ng-click="launchCastApp()" ng-show="castStatus.devicesAvailable" class="btn btn-link pull-right"><img ng-show="castStatus.deviceState == '0'" src="/app/img/ic_cast_black_24dp.png" title="Chromecast devices available, add them to piSignage" class="img-thumbanail"/><img ng-show="castStatus.deviceState != '0'" src="/app/img/ic_cast_connected_black_24dp.png" title="Chromecast device connected" class="img-thumbanail"/></button>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="https://twitter.com/pisignage" target="_blank"><small class="text-info">follow us on&nbsp;<i class="fa fa-twitter-square text-info"></i>&nbsp;for latest updates and tips</small></a></li>
+        <li><a href="https://twitter.com/pisignage" target="_blank"><!--small class="text-info">follow us on&nbsp;<i class="fa fa-twitter-square text-info"></i>&nbsp;for latest updates and tips</small--></a></li>
       </ul>
     </div>
   </div>

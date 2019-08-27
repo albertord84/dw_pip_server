@@ -61,7 +61,7 @@
           <h6 ng-if="item.isConnected &amp;&amp; item.syncInProgress" class="text-primary"><i class="fa fa-spinner fa-spin"></i><small class="truncate">&nbsp;{{item.wgetBytes }} &nbsp;{{item.wgetSpeed }}B/sec</small></h6>
         </div>
         <div ng-if="item.version" class="col-sm-2">
-          <h6 class="text-primary truncate"><small>ver:&nbsp;{{item.version}}/{{item.platform_version}}&nbsp;
+          <h6 class="text-primary truncate"><small><!--ver:&nbsp;{{item.version}}/{{item.platform_version}}&nbsp;-->
               <button ng-if="item.version != player.currentVersion.version" ng-click="swUpdate(item)" class="btn btn-warning btn-xs"><i class="fa fa-arrow-circle-up"></i></button></small></h6>
         </div>
       </div>
