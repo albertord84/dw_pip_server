@@ -37,7 +37,7 @@ module.exports = {
         }
     },
     session: {
-        secret: 'piSignage'
+        secret: 'piPlayer'
     },
 
     filenameRegex:          /[&\/\\#,+()$~%'":*?<>{}]/g,
