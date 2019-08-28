@@ -134,8 +134,54 @@ body .modal-body {
     transform: rotate(90deg);
 }
 
+.panel
+{
+    border-radius: 0px !important;
+}
+.panel-heading
+{
+    border-radius: 0px !important;
+    color: #1e5c87 !important;
+    background-color: #e8eaea !important;
+    border-color: #f8f8f800 !important;
+}
+.panel-heading
+{
+}
+.panel-info {
+    border-color: #e7e7e7  !important;
+}
+.bg-info {background-color: #d4f992 !important}
+.btn {
+    border-radius: 0px !important;
+}
+.btn-info {
+    background-color: #3cafd9 !important;
+}
+.btn-success {
+    background-color: #3bc959 !important;
+    border-color: #36bb51 !important;
+}
+.btn-warning {
+    background-color: #eb5f4e !important;
+    border-color: #e14733 !important;
+}
 
+.form-control {
+    border-radius: 0px !important;
+}
+.close { opacity: 1 !important; }
+.p-1 { padding: 5px !important; }
+.p-2 { padding: 10px !important; }
+.p-3 { padding: 15px !important; }
+.p-4 { padding: 20px !important; }
+.p-5 { padding: 25px !important; }
 
-
-
-
+.m-1 { margin: 5px !important; }
+.m-2 { margin: 10px !important; }
+.m-3 { margin: 15px !important; }
+.m-4 { margin: 20px !important; }
+.m-5 { margin: 25px !important; }
+.nav-pills>li>a {
+    border-radius: 0px !important;
+}
