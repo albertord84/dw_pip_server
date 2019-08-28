@@ -1,21 +1,22 @@
 
 <div class="modal-content">
   <div class="modal-header bg-info">
-    <h4 class="text-center">Make this as Advt. Playlist</h4>
+    <h4 class="text-center">Fazer isto como Playlist de publicidade<!--Make this as Advt. Playlist--></h4>
   </div>
   <div class="modal-body">
     <form class="form-horizontal">
       <div class="form-group">
         <div class="col-sm-6">
           <p>
-            By making this as Advt. playlist, you can insert the assets of this playlist periodically in between the currently
-            playing playlist.
+            Fazendo essa playlist de publicidade, você pode inserir itens dessa playlist periodicamente entre os itens da playlist atual.
+            <!--By making this as Advt. playlist, you can insert the assets of this playlist periodically in between the currently
+            playing playlist.-->
           </p>
         </div>
         <div class="col-sm-6">
           <div class="checkbox">
             <label>
-              <input type="checkbox" ng-model="playlist.selectedPlaylist.settings.ads.adPlaylist"/><span>Make this as Advt. Playlist</span>
+              <input type="checkbox" ng-model="playlist.selectedPlaylist.settings.ads.adPlaylist"/><span>Tornar essa playlist, uma playlist de publicidade.<!--Make this as Advt. Playlist--></span>
             </label>
           </div>
         </div>
@@ -23,89 +24,93 @@
       <div ng-show="playlist.selectedPlaylist.settings.ads.adPlaylist" class="form-group">
         <div class="col-sm-6">
           <p>
-              You can play the assets only on side and banner zones by disabling main zone here.
-            Still you have to select dummy file for main zone
+            Você pode tocar os itens apenas ao lado e nas zonas de banner, desabilitando a zona principal aqui. Você ainda terá que selecionar um arquivo padrão para a zona principal.
+              <!--You can play the assets only on side and banner zones by disabling main zone here.
+            Still you have to select dummy file for main zone-->
           </p>
         </div>
         <div class="col-sm-6">
           <div class="checkbox">
             <label>
-              <input type="checkbox" ng-model="playlist.selectedPlaylist.settings.ads.noMainPlay"/><span>Play only in side/banner zones</span>
+              <input type="checkbox" ng-model="playlist.selectedPlaylist.settings.ads.noMainPlay"/><span>Tocar apenas nas zonas laterais e de banner. <!--Play only in side/banner zones--></span>
             </label>
           </div>
         </div>
       </div>
       <div ng-show="playlist.selectedPlaylist.settings.ads.adPlaylist" class="form-group">
-        <label class="col-sm-4 control-label">Play</label>
+        <label class="col-sm-4 control-label">Tocar</label>
         <div class="col-sm-3">
           <div class="input-group">
             <input type="number" ng-model="playlist.selectedPlaylist.settings.ads.adCount" class="form-control"/>
-            <div class="input-group-addon"><small class="text-muted"> assets</small></div>
+            <div class="input-group-addon"><small class="text-muted"> itens</small></div>
           </div>
         </div>
         <div class="col-sm-5">
           <div class="input-group">
-            <div class="input-group-addon"><small class="text-muted"> after every</small></div>
+            <div class="input-group-addon"><small class="text-muted"> após cada</small></div>
             <input type="number" ng-model="playlist.selectedPlaylist.settings.ads.adInterval" class="form-control"/>
-            <div class="input-group-addon"><small class="text-muted"> seconds</small></div>
+            <div class="input-group-addon"><small class="text-muted"> segundo(s)</small></div>
           </div>
         </div>
       </div>
       <div class="form-group">
         <div class="col-sm-6 col-sm-offset-6">
-          <button ng-click="saveSettings()" class="btn btn-success">Save</button>
+          <button ng-click="saveSettings()" class="btn btn-success">Salvar</button>
         </div>
       </div>
     </form>
   </div>
   <div class="modal-header bg-info">
-    <h4 class="text-center">Play this playlist only once during selected duration</h4>
+    <h4 class="text-center">Tocar essa playlist apenas uma vez na duração selecionada <!-- Play this playlist only once during selected duration--></h4>
   </div>
   <div class="modal-body">
     <form class="form-horizontal">
       <div class="form-group">
         <div class="col-sm-6">
           <p>
-            Play this playlist once every selected duration by stopping regular playlist
-            ,acts like insertion of advt at fixed intervals
+            
+            Reproduza esta playlist uma vez a cada duração selecionada, interrompendo a lista de reprodução regular. (Atua como inserção de publicidade)
+            <!--Play this playlist once every selected duration by stopping regular playlist
+            ,acts like insertion of advt at fixed intervals-->
           </p>
         </div>
         <div class="col-sm-6">
           <div class="checkbox">
             <label>
-              <input type="checkbox" ng-model="playlist.selectedPlaylist.settings.domination.enable"/><span>Enable (Domination Content)</span>
+              <input type="checkbox" ng-model="playlist.selectedPlaylist.settings.domination.enable"/><span>Habilitar (Conteúdo dominante)</span>
             </label>
           </div>
         </div>
       </div>
       <div ng-show="playlist.selectedPlaylist.settings.domination.enable" class="form-group">
         <div class="col-sm-6">
-          <p>Play after every</p>
+          <p>Tocar a cada</p>
         </div>
         <div class="col-sm-6">
           <div class="input-group">
             <input type="number" ng-model="playlist.selectedPlaylist.settings.domination.timeInterval" class="form-control"/>
-            <div class="input-group-addon"><small> minutes</small></div>
+            <div class="input-group-addon"><small> minutos</small></div>
           </div>
         </div>
       </div>
       <div class="form-group">
         <div class="col-sm-6 col-sm-offset-6">
-          <button ng-click="saveSettings()" class="btn btn-success">Save</button>
+          <button ng-click="saveSettings()" class="btn btn-success">Salvar</button>
         </div>
       </div>
     </form>
   </div>
   <div class="modal-header bg-info">
-    <h4 class="text-center">Play this as independent Audio Playlist for the aux port</h4>
+    <h4 class="text-center">Tocar isso como Audio Playlist independente para a porta auxiliar<!--Play this as independent Audio Playlist for the aux port--></h4>
   </div>
   <div class="modal-body">
     <form class="form-horizontal">
       <div class="form-group">
         <div class="col-sm-6">
           <p>
-            In addition to signage functionality, you can play audio from a playlist
-            through the 3.5mm jack
+            Além da funcionalidade de sinalização, você pode reproduzir áudio de uma lista de reprodução através do conector de 3,5 mm
+            <!--In addition to signage functionality, you can play audio from a playlist
+            through the 3.5mm jack-->
           </p>
         </div>
         <div class="col-sm-6">

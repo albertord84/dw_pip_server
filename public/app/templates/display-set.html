@@ -1,13 +1,13 @@
 
 <div class="modal-header">
-  <h4>Select Display Orientation and Resolution</h4>
+  <h4>Selecionar Orientação e Resolução do Display</h4>
 </div>
 <div class="modal-body overflow-auto">
   <form role="form" name="formdisplay">
     <div class="form-group row">
       <div class="col-sm-4 text-right">
         <div class="radio">
-          <label class="text-muted"><small>Resolution</small></label>
+          <label class="text-muted"><small>Resolução</small></label>
         </div>
       </div>
       <div class="col-sm-4">
@@ -28,7 +28,7 @@
     <div class="form-group row">
       <div class="col-sm-4 text-right">
         <div class="radio">
-          <label class="text-muted"><small>TV Orientation</small></label>
+          <label class="text-muted"><small>Orientação da TV</small></label>
         </div>
       </div>
       <div class="col-sm-4">
@@ -49,42 +49,42 @@
     <div class="form-group row">
       <div class="col-sm-4 text-right">
         <div class="radio">
-          <label class="text-muted"><small>Animation</small></label>
+          <label class="text-muted"><small>Animação</small></label>
         </div>
       </div>
       <div class="col-sm-2">
         <div class="radio">
           <label>
-            <input type="radio" ng-model="group.selectedGroup.animationEnable" ng-change="group.selectedGroup.animationType = null;" ng-value="false"/><small>Disable</small>
+            <input type="radio" ng-model="group.selectedGroup.animationEnable" ng-change="group.selectedGroup.animationType = null;" ng-value="false"/><small>Desabilitar</small>
           </label>
         </div>
         <div class="radio">
           <label>
-            <input type="radio" ng-model="group.selectedGroup.animationType" ng-change="group.selectedGroup.animationEnable = true;" value="blend"/><small class="text-primary">Blend</small>
-          </label>
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="radio">
-          <label>
-            <input type="radio" ng-model="group.selectedGroup.animationType" ng-change="group.selectedGroup.animationEnable = true;" value="right"/><small>Slide right</small>
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <input type="radio" ng-model="group.selectedGroup.animationType" ng-change="group.selectedGroup.animationEnable = true;" value="left"/><small>Slide left</small>
+            <input type="radio" ng-model="group.selectedGroup.animationType" ng-change="group.selectedGroup.animationEnable = true;" value="blend"/><small class="text-primary">Mistura</small>
           </label>
         </div>
       </div>
       <div class="col-sm-3">
         <div class="radio">
           <label>
-            <input type="radio" ng-model="group.selectedGroup.animationType" ng-change="group.selectedGroup.animationEnable = true;" value="up"/><small>Slide up</small>
+            <input type="radio" ng-model="group.selectedGroup.animationType" ng-change="group.selectedGroup.animationEnable = true;" value="right"/><small>Deslizar para a direita</small>
           </label>
         </div>
         <div class="radio">
           <label>
-            <input type="radio" ng-model="group.selectedGroup.animationType" ng-change="group.selectedGroup.animationEnable = true;" value="down"/><small>Slide down</small>
+            <input type="radio" ng-model="group.selectedGroup.animationType" ng-change="group.selectedGroup.animationEnable = true;" value="left"/><small>Deslizar para a esquerda</small>
+          </label>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="radio">
+          <label>
+            <input type="radio" ng-model="group.selectedGroup.animationType" ng-change="group.selectedGroup.animationEnable = true;" value="up"/><small>Deslizar para cima</small>
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" ng-model="group.selectedGroup.animationType" ng-change="group.selectedGroup.animationEnable = true;" value="down"/><small>Deslizar para a baixo</small>
           </label>
         </div>
       </div>
@@ -93,7 +93,7 @@
     <div class="form-group row">
       <div class="col-xs-4 text-right">
         <div class="radio">
-          <label class="text-muted"><small>Screen Background</small></label>
+          <label class="text-muted"><small>Plano de fundo da tela</small></label>
         </div>
       </div>
       <div class="col-xs-3">
@@ -113,11 +113,11 @@
     <div class="form-group row">
       <div class="col-xs-4 text-right">
         <div class="radio">
-          <label class="text-muted"><small>Display a Logo</small></label>
+          <label class="text-muted"><small>Mostrar uma Logo</small></label>
         </div>
       </div>
       <div class="col-xs-4">
-        <button ng-click="showFileList()" class="btn btn-sm btn-link"><small>{{group.selectedGroup.logo || "Select a png image from Assets"}}</small></button>
+        <button ng-click="showFileList()" class="btn btn-sm btn-link"><small>{{group.selectedGroup.logo || "Selecione um PNG em Itens"}}</small></button>
         <button ng-if="group.selectedGroup.logo" ng-click="group.selectedGroup.logo=null" class="btn btn-xs btn-warning">X</button>
       </div>
       <div class="col-xs-2">
@@ -134,25 +134,25 @@
     <div class="form-group row">
       <div class="col-sm-4 text-right">
         <div class="checkbox">
-          <label class="text-muted"><small>Display Clock</small></label>
+          <label class="text-muted"><small>Mostrar relógio</small></label>
         </div>
       </div>
       <div class="col-sm-2">
         <div class="checkbox">
           <label>
-            <input type="checkbox" name="show_clock" ng-model="group.selectedGroup.showClock.enable"/><small>Show</small>
+            <input type="checkbox" name="show_clock" ng-model="group.selectedGroup.showClock.enable"/><small>Mostrar</small>
           </label>
         </div>
       </div>
       <div ng-show="group.selectedGroup.showClock.enable" class="col-sm-3">
         <div class="radio">
           <label>
-            <input type="radio" ng-model="group.selectedGroup.showClock.position" value="top"/><small>Top</small>
+            <input type="radio" ng-model="group.selectedGroup.showClock.position" value="top"/><small>Topo</small>
           </label>
         </div>
         <div class="radio">
           <label>
-            <input type="radio" ng-model="group.selectedGroup.showClock.position" value="bottom"/><small>Bottom</small>
+            <input type="radio" ng-model="group.selectedGroup.showClock.position" value="bottom"/><small>Abaixo</small>
           </label>
         </div>
       </div>
@@ -173,13 +173,13 @@
     <div class="form-group row">
       <div class="col-sm-4 text-right">
         <div class="radio">
-          <label class="text-muted"><small>Fit image</small></label>
+          <label class="text-muted"><small>Ajustar a imagem</small></label>
         </div>
       </div>
       <div class="col-sm-2">
         <div class="radio">
           <label>
-            <input type="radio" ng-model="group.selectedGroup.imageSize" ng-value="0"/><small>Actual</small>
+            <input type="radio" ng-model="group.selectedGroup.imageSize" ng-value="0"/><small>Atual</small>
           </label>
         </div>
         <div class="radio">
@@ -189,19 +189,19 @@
         </div>
         <div class="radio">
           <label>
-            <input type="radio" ng-model="group.selectedGroup.imageSize" ng-value="2"/><small>Stretched</small>
+            <input type="radio" ng-model="group.selectedGroup.imageSize" ng-value="2"/><small>Esticada</small>
           </label>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="checkbox">
-          <label><small>Reload link URLs each time<br>(appends ?ts in chromeapp)</small></label>
+          <label><small>Recarregar links URL a cada vez<br><!--(appends ?ts in chromeapp)--></small></label>
         </div>
       </div>
       <div class="col-sm-2">
         <div class="checkbox">
           <label>
-            <input type="checkbox" name="reload_checkbox" ng-model="group.selectedGroup.urlReloadDisable" ng-true-value="false" ng-false-value="true" ng-checked="group.selectedGroup.urlReloadDisable !== true"/><small>Enable</small>
+            <input type="checkbox" name="reload_checkbox" ng-model="group.selectedGroup.urlReloadDisable" ng-true-value="false" ng-false-value="true" ng-checked="group.selectedGroup.urlReloadDisable !== true"/><small>Habilitar</small>
           </label>
         </div>
       </div>
@@ -209,7 +209,7 @@
     <div class="form-group row">
       <div class="col-sm-4 text-right">
         <div class="radio">
-          <label class="text-muted"><small>Fit video</small></label>
+          <label class="text-muted"><small>Ajustar vídeo</small></label>
         </div>
       </div>
       <div class="col-sm-2">
@@ -220,60 +220,60 @@
         </div>
         <div class="radio">
           <label>
-            <input type="radio" ng-model="group.selectedGroup.videoSize" ng-value="2"/><small>Stretched</small>
+            <input type="radio" ng-model="group.selectedGroup.videoSize" ng-value="2"/><small>Esticado</small>
           </label>
         </div>
       </div>
-      <div class="col-sm-4 text-right"><small>Stop video every seconds to show adverts (0 to disable)</small></div>
+      <div class="col-sm-4 text-right"><small>Parar video a cada "N" segundos para mostrar publicidade (zero para desabilitar).<!-- Stop video every seconds to show adverts (0 to disable)--></small></div>
       <div class="col-sm-2">
-        <input type="number" placeholder="secs" ng-model="group.timeToStopVideo" class="input-sm form-control"/>
+        <input type="number" placeholder="segs" ng-model="group.timeToStopVideo" class="input-sm form-control"/>
       </div>
     </div>
     <hr/>
     <div class="form-group row">
       <div class="col-sm-4 text-right">
         <div class="radio">
-          <label class="text-muted"><small>Schedule Display OFF</small></label>
+          <label class="text-muted"><small>Agendar fim da mostragem<!--Schedule Display OFF--></small></label>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="checkbox">
           <label>
-            <input type="checkbox" name="sleep_checkbox" ng-model="group.selectedGroup.sleep.enable"/><small>Enable</small>
+            <input type="checkbox" name="sleep_checkbox" ng-model="group.selectedGroup.sleep.enable"/><small>Habilitar</small>
           </label>
         </div>
       </div>
     </div>
     <div ng-show="group.selectedGroup.sleep.enable" class="form-group row">
       <div class="col-sm-4 col-sm-offset-4">
-        <label><small>ON at</small>
+        <label><small>Iniciar às</small>
           <input type="time" ng-model="group.selectedGroup.sleep.ontimeObj" class="form-control"/>
         </label>
       </div>
       <div class="col-sm-4">
-        <label><small>OFF at</small>
+        <label><small>Finalizar às</small>
           <input type="time" ng-model="group.selectedGroup.sleep.offtimeObj" class="form-control"/>
         </label>
       </div>
-      <div class="col-sm-10 col-sm-offset-2"><small class="text-info">For finer control use TV_OFF playlist under group scheduling</small></div>
+      <div class="col-sm-10 col-sm-offset-2"><small class="text-info"><!--For finer control use TV_OFF playlist under group scheduling-->Para um controle mais preciso, use a lista de reprodução TV_OFF sob agendamento de grupo</small></div>
     </div>
     <hr/>
     <div class="form-group row">
       <div class="col-sm-4 text-right">
         <div class="radio">
-          <label class="text-muted"><small>Optional daily reboot</small></label>
+          <label class="text-muted"><small>Reinício diário opcional</small></label>
         </div>
       </div>
       <div class="col-sm-2">
         <div class="checkbox">
           <label>
-            <input type="checkbox" name="reboot_checkbox" ng-model="group.selectedGroup.reboot.enable"/><small>enable</small>
+            <input type="checkbox" name="reboot_checkbox" ng-model="group.selectedGroup.reboot.enable"/><small>habilitar</small>
           </label>
         </div>
       </div>
       <div class="col-sm-2 text-right">
         <div class="radio">
-          <label class="text-muted"><small ng-show="group.selectedGroup.reboot.enable" class="text-muted">at</small></label>
+          <label class="text-muted"><small ng-show="group.selectedGroup.reboot.enable" class="text-muted">às</small></label>
         </div>
       </div>
       <div class="col-sm-4">
@@ -294,7 +294,7 @@
       <div class="col-sm-2">
         <div class="checkbox">
           <label>
-            <input type="checkbox" name="kioskui_checkbox" ng-model="group.selectedGroup.kioskUi.enable"/><small>Enable</small>
+            <input type="checkbox" name="kioskui_checkbox" ng-model="group.selectedGroup.kioskUi.enable"/><small>habilitar</small>
           </label>
         </div>
       </div>
@@ -304,7 +304,7 @@
         </div>
       </div>
       <div ng-show="group.selectedGroup.kioskUi.enable" class="col-sm-5 col-sm-offset-6">
-        <div class="input-group input-group-sm"><small class="input-group-addon">Inactivitiy timeout</small>
+        <div class="input-group input-group-sm"><small class="input-group-addon"><!--Inactivitiy timeout-->Tempo limite de inatividade</small>
           <input type="number" placeholder="30 secs" ng-model="group.selectedGroup.kioskUi.timeout" class="input-sm form-control"/>
         </div>
       </div>
@@ -319,7 +319,7 @@
       <div class="col-sm-8">
         <div class="checkbox">
           <label>
-            <input type="checkbox" name="ffmpeg" ng-model="group.selectedGroup.enableMpv"/><small>Avoid gap between videos (**BETA**, use only for short videos)</small>
+            <input type="checkbox" name="ffmpeg" ng-model="group.selectedGroup.enableMpv"/><small><!--Avoid gap between videos (**BETA**, use only for short videos)-->Evite o intervalo entre os vídeos (Use apenas para vídeos curtos)</small>
           </label>
         </div>
       </div>
@@ -327,6 +327,6 @@
   </form>
 </div>
 <div class="modal-footer">
-  <button ng-click="displayModal.close()" class="btn">Cancel</button>
+  <button ng-click="displayModal.close()" class="btn">Cancelar</button>
   <button ng-click="saveSettings()" class="btn btn-danger">OK</button>
 </div>
