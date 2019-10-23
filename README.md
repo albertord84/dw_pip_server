@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# pisignage-server
+x# pisignage-server
 
 Server code to manage piSignage players in a LAN or Private Network or to setup your own server!
 
@@ -154,6 +153,5 @@ Server code to manage piSignage players in a LAN or Private Network or to setup 
 
     
 ***Please raise an issue for problems or send us email at support@pisignage.com***  
-=======
+
 # dw_pip_server
->>>>>>> 8adc6ad75dc150b67fc9e2d8dda69994c6e7740c
