@@ -89,7 +89,6 @@ exports.updateObject = function (req, res) {
     });
 };
 
-
 exports.deleteObject = function (req, res) {
 
     var object = req.object;

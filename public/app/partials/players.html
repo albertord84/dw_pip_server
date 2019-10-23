@@ -3,15 +3,15 @@
   <div class="panel-heading">
     <div class="row">
       <div class="col-sm-4">
-        <h3 class="panel-title">Reported Players
+        <h3 class="panel-title">Players ativos
           <div ng-init="alphabetical=false" class="btn-group btn-group-sm">
             <button ng-click="alphabetical=false" class="fa fa-clock-o fa-lg text-muted btn btn-info"></button>
             <button ng-click="alphabetical=true" class="fa fa-sort-alpha-asc fa-lg text-muted btn btn-info"></button>
           </div>
         </h3>
       </div>
-      <div class="col-sm-2"><span ng-attr-title="Click this button to select, edit and add labels" class="btn-group">
-          <button ng-click="loadCategory()" class="btn btn-info btn-sm"><i class="fa fa-tags">&nbsp;</i><span>{{label.selectedPlayerLabel.trunc(10) || "Labels"}}</span></button>
+      <div class="col-sm-2"><span ng-attr-title="Clique este botão para selecionar, editar e adicionar rótulos" class="btn-group">
+          <button ng-click="loadCategory()" class="btn btn-info btn-sm"><i class="fa fa-tags">&nbsp;</i><span>{{label.selectedPlayerLabel.trunc(10) || "Rótulos"}}</span></button>
           <button ng-show="label.selectedPlayerLabel" ng-click="clearCategory()" class="btn btn-info btn-sm"><i class="fa fa-close"></i></button></span></div>
     </div>
   </div>
@@ -36,12 +36,12 @@
 '+item.wifiMac}}" class="col-sm-6"><small class="text-primary truncate"> {{item.myIpAddress || "IP:NA"}}</small></div>
             <div style="padding:3px;" class="col-sm-6">
               <select ng-model="item.TZ" ng-change="changeTZ(item)" ng-options="tz for tz in tzNames" class="form-control select-xs">
-                <option value="" selected="selected"> --No TZ--</option>
+                <option value="" selected="selected"> --Sem TimeZone--</option>
               </select>
             </div>
           </div>
         </div>
-        <div class="col-sm-3"><i ng-class="item.statusClass" title="{{item.isConnected?(item.playlistOn?'online &amp; playing, tv-on:'+item.tvStatus:'online &amp; not playing, tv-on:'+item.tvStatus):'offline'}}" class="fa fa-circle fa-lg"></i><a ng-href="#" ng-click="gotoPlaylist(item.currentPlaylist)">&nbsp;{{item.currentPlaylist}}</a></div>
+        <div class="col-sm-3"><i ng-class="item.statusClass" title="{{item.isConnected?(item.playlistOn?'online &amp; tocando, tv-on:'+item.tvStatus:'online &amp; não tocando, tv-on:'+item.tvStatus):'offline'}}" class="fa fa-circle fa-lg"></i><a ng-href="#" ng-click="gotoPlaylist(item.currentPlaylist)">&nbsp;{{item.currentPlaylist}}</a></div>
         <!--.col-sm-2
         <select ng-model="item.group.name" ng-change="assignGroup(item)" ng-options="gr for gr in group.groupNames" class="form-control select-xs"></select>
         -->
@@ -51,21 +51,21 @@
       </div>
       <div class="row">
         <div class="col-sm-4">
-          <h6 class="text-primary"><small>{{item.cpuSerialNumber}}<small title="player on since" class="text-info pl-5">{{item.uptimeFormatted }}</small><small title="cpu temperature" class="text-info pl-5">{{item.piTemperature}}</small><small title="disk space available" class="text-info pl-5">{{item.diskSpaceAvailable}}</small></small></h6>
+          <h6 class="text-primary"><small>{{item.cpuSerialNumber}}<small title="player tocando desde" class="text-info pl-5">{{item.uptimeFormatted }}</small><small title="temperatura da CPU" class="text-info pl-5">{{item.piTemperature}}</small><small title="espaço em disco disponível" class="text-info pl-5">{{item.diskSpaceAvailable}}</small></small></h6>
         </div>
         <div class="col-sm-3">
-          <h6 class="text-primary truncate"><small>last seen:&nbsp;{{item.lastReported?(item.lastReported | timeAgo):"never"}}</small></h6>
+          <h6 class="text-primary truncate"><small>última visualização:&nbsp;{{item.lastReported?(item.lastReported | timeAgo):"nunca"}}</small></h6>
         </div>
         <div class="col-sm-3">
-          <h6 ng-if="!item.isConnected || !item.syncInProgress" class="text-primary truncate"><small>last sync:&nbsp;{{item.lastUpload?(item.lastUpload | timeAgo):"never"}}</small></h6>
-          <h6 ng-if="item.isConnected &amp;&amp; item.syncInProgress" class="text-primary"><i class="fa fa-spinner fa-spin"></i><small class="truncate">&nbsp;{{item.wgetBytes }} &nbsp;{{item.wgetSpeed }}B/sec</small></h6>
+          <h6 ng-if="!item.isConnected || !item.syncInProgress" class="text-primary truncate"><small>última sincronização:&nbsp;{{item.lastUpload?(item.lastUpload | timeAgo):"nunca"}}</small></h6>
+          <h6 ng-if="item.isConnected &amp;&amp; item.syncInProgress" class="text-primary"><i class="fa fa-spinner fa-spin"></i><small class="truncate">&nbsp;{{item.wgetBytes }} &nbsp;{{item.wgetSpeed }}B/seg</small></h6>
         </div>
         <div ng-if="item.version" class="col-sm-2">
-          <h6 class="text-primary truncate"><small>ver:&nbsp;{{item.version}}/{{item.platform_version}}&nbsp;
+          <h6 class="text-primary truncate"><small><!--ver:&nbsp;{{item.version}}/{{item.platform_version}}&nbsp;-->
               <button ng-if="item.version != player.currentVersion.version" ng-click="swUpdate(item)" class="btn btn-warning btn-xs"><i class="fa fa-arrow-circle-up"></i></button></small></h6>
         </div>
       </div>
     </li>
   </ul>
 </div>
-<li ng-show="player.players.length == 0" class="list-group-item list-group-item">There are no Players</li>
+<li ng-show="player.players.length == 0" class="list-group-item list-group-item">Não existem Players</li>

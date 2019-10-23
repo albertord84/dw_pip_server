@@ -48,7 +48,6 @@ exports.index = function (req, res) {
     });
 }
 
-
 exports.createFiles = function (req, res) {
 
     var files = [],

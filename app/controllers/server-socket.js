@@ -6,7 +6,6 @@ var players = require('./players'),
     _ = require('lodash');
 
 var handleClient = function (socket) {
-
     //console.log("connection with 0.9.19 socket.io : "+socket.id);
     socket.on('status', function (settings, status, priority) {
         var statusObject = _.extend(

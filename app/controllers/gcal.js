@@ -25,6 +25,7 @@ var readGcal = function (file) {
     }
     return fileContents;
 }
+
 exports.index = function (calData, cb) {
     oauth2Client.setCredentials(calData.tokens);
     calendar.calendarList.list({minAccessRole: 'owner', auth: oauth2Client}, function (err, calendarList) {

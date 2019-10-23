@@ -4,7 +4,7 @@
     <div class="panel-heading">
       <div class="row">
         <div class="col-xs-10">
-          <h4>Available Licenses in the server</h4>
+          <h4>Licensas disponíveis no servidor</h4>
         </div>
         <div class="col-xs-2">
           <button class="btn btn-success pull-right">
@@ -14,10 +14,10 @@
       </div>
     </div>
     <div ng-show="savedFiles.length == 0" class="panel-body">
-      Please register the player ID
+      <!--Please register the player ID
       at pisignage.com to generate the license files.Then either save the license file from the email or download
       at pisignage.com/subscriptions.<br><br>
-      By uploading license files to your local server, they are downloaded to players automatically.
+      By uploading license files to your local server, they are downloaded to players automatically.-->
     </div><small ng-show="statusMsg" class="alert alert-danger">{{statusMsg}}</small>
     <ul class="list-group">
       <li ng-repeat="file in savedFiles |  filter: searchLicense" class="list-group-item">
@@ -29,7 +29,7 @@
   </div>
   <div class="panel panel-info">
     <div class="panel-heading">
-      <h4>Installation Settings</h4>
+      <h4>Configurações de instalação<!--Installation Settings--></h4>
     </div>
     <div class="panel-body">
       <form role="form" name="settingsForm" class="form-horizontal">
