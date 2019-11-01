@@ -70,7 +70,7 @@
         <div as-sortable-item-handle="as-sortable-item-handle" class="col-sm-1 text-right">
           <h6>  {{$index+'.'}}</h6>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4"> 
           <select ng-model="pl.name" style="background:#f8f8f8;" ng-options="plitems for plitems in playlist.playlistNames track by plitems" ng-change="updateGroup()" class="form-control">
             <option value="">--</option>
           </select>
