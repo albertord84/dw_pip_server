@@ -23,7 +23,7 @@
                     <p><small>({{item.description}})</small></p>
                   </label>
                 </div>
-                <button dropdown-toggle="dropdown-toggle" ng-if="ltype.indexOf('custom') === 0" class="btn btn-sm btn-link dropdown-toggle"><small class="text-muted">layout file:&nbsp;</small><small>{{playlist.selectedPlaylist.templateName || "Selecione um arquivo custom_layout * .html em Itens"}}</small><i class="fa fa-caret-down"></i></button>
+                <button dropdown-toggle="dropdown-toggle" ng-if="ltype.indexOf('custom') === 0" class="btn btn-sm btn-link dropdown-toggle"><small class="text-muted">layout file:&nbsp;</small><small>{{playlist.selectedPlaylist.templateName || "Selecione um arquivo custom_layout * .html em recursos"}}</small><i class="fa fa-caret-down"></i></button>
                 <ul role="menu" ng-if="ltype.indexOf('custom') === 0" class="dropdown-menu">
                   <li ng-repeat="asset in asset.files | filter:customTemplates"><a href="#" ng-click="selectTemplate(asset,ltype)">&nbsp;&nbsp;{{asset}}</a></li>
                 </ul>

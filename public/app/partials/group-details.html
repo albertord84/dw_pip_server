@@ -41,16 +41,16 @@
       </div>
       <div ng-show="group.selectedGroup.playlists[0].name.length" class="row form-group">
         <h5 class="col-sm-8">
-          Você pode selecionar listas de reprodução adicionais para fins de agendamento / promoção
+          Você pode selecionar playlists adicionais para fins de agendamento / promoção
           <!--a.btn.btn-link(ng-click="collapsed = !collapsed;")<i ng-class="{'fa-chevron-circle-right':collapsed,'fa-chevron-circle-down':!collapsed}" class="fa fa-lg"></i>
-          --><a ng-click="add()" class="btn btn-info btn-xs"><i class="fa fa-lg fa-plus">acicionar</i></a><span ng-show="showMaxErr" class="text-info">&nbsp&nbsp {{'
-            Máximo de agendamentos permitidos para listas de reprodução (30)'}}</span>
+          --><a ng-click="add()" class="btn btn-info btn-xs"><i class="fa fa-lg fa-plus">adicionar</i></a><span ng-show="showMaxErr" class="text-info">&nbsp&nbsp {{'
+            Máximo de agendamentos permitidos para playlists (30)'}}</span>
         </h5>
         <div class="col-sm-4">
           <div class="checkbox">
             <label>
               <input type="checkbox" title="Content from all the eligible playlists will be combined" ng-model="group.selectedGroup.playAllEligiblePlaylists"/><small>
-                Combine o conteúdo de todas as listas de reprodução agendadas</small>
+                Combine o conteúdo de todas as playlists agendadas</small>
             </label>
           </div>
           <div class="checkbox">
@@ -61,7 +61,7 @@
           </div>
           <div ng-show="group.selectedGroup.playAllEligiblePlaylists" class="checkbox">
             <label ng-attr-title="Play content alternatively from selected playlists">
-              <input type="checkbox" ng-model="group.selectedGroup.alternateContent"/><small>Conteúdo alternativo das listas de reprodução selecionadas</small>
+              <input type="checkbox" ng-model="group.selectedGroup.alternateContent"/><small>Conteúdo alternativo das playlists selecionadas</small>
             </label>
           </div>
         </div>
