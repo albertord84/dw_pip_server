@@ -1,13 +1,17 @@
 
 <div class="panel panel-info">
   <div class="panel-heading">
-    <h3 class="panel-title"><span ng-click="collapsed = !collapsed;">Playlists&nbsp;<i ng-class="{'fa-caret-right':collapsed,'fa-caret-down':!collapsed}" class="fa fa-lg"></i></span><a ng-click="fn.edit()" class="btn btn-sm btn-link pull-right"><em ng-class="{'text-danger':!fn.editMode,'text-success':fn.editMode}">{{fn.editMode?'Done':'Edit'}}</em></a></h3>
+    <h3 class="panel-title"><span ng-click="collapsed = !collapsed;">Playlists&nbsp;<i ng-class="{'fa-caret-right':collapsed,'fa-caret-down':!collapsed}" class="fa fa-lg"></i></span>
+      <a ng-click="fn.edit()" class="pull-right">
+        <b class="text-black">
+      {{fn.editMode?'FINALIZAR':'EDITAR'}}
+        </b></a></h3>
   </div>
   <div ng-hide="collapsed" class="form-group">
     <form name="addform" ng-submit="fn.add()">
       <div class="input-group col-xs-12">
-        <input type="text" ng-model="newPlaylist.name" placeholder="Add a new Playlist" required="required" class="form-control"/><span class="input-group-btn">
-          <button type="submit" class="btn btn-default"><i class="fa fa-plus"></i></button></span>
+        <input type="text" ng-model="newPlaylist.name" placeholder="Adicionar uma nova Playlist" required="required" class="form-control"/><span class="input-group-btn">
+          <button type="submit" class="btn btn-transparent"><i class="fa fa-plus text-black"></i></button></span>
       </div>
     </form>
   </div>
