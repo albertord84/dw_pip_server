@@ -8,6 +8,9 @@ data/releases
 data/licenses
 
 
+mongodb
+
+mongodb-linux-x86_64-3.4.9
 
 data/releases/package.json
 

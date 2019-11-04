@@ -21,6 +21,7 @@ angular.module('pisignage.services')
             'SEEKING' : 'SEEKING',
             'ERROR' : 'ERROR'
         };
+        
 
         var messageTxt = {"type": "serverIp",
                             "ipAddress": "http://pisignage.com",
@@ -180,10 +181,12 @@ angular.module('pisignage.services')
             // request session
             var sessionRequest = new chrome.cast.SessionRequest(applicationID);
             var apiConfig = new chrome.cast.ApiConfig(sessionRequest,sessionListener,receiverListener,autoJoinPolicy);
+            
 
             chrome.cast.initialize(apiConfig,
                 function(){
-                    console.log('cast init success')
+                    console.log('cast init success ');
+                    
                 }, function(e){
                     console.log('cast initialize error',e);
                 }

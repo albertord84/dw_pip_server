@@ -1,9 +1,9 @@
 
 <div class="modal-header">
-  <h4>File to be played in the {{selectedZone}} zone
-    <button ng-click="modal.close()" class="btn btn-default pull-right">Done</button>
+  <h4>Arquivo a ser tocado na {{selectedZone}} zona
+    <button ng-click="modal.close()" class="btn btn-default pull-right">Concluído</button>
   </h4>
-  <p>along with {{selectedAsset.filename}}</p>
+  <p>junto com {{selectedAsset.filename}}</p>
 </div>
 <div class="modal-body">
   <div class="panel-body">
@@ -11,7 +11,7 @@
       <tab index="0" heading="Assets">
         <ul class="list-group">
           <li class="list-group-item list-group-item-info">
-            <input type="text" placeholder="Filter by Name" ng-model="search" class="form-control"/>
+            <input type="text" placeholder="Filtrar por nome" ng-model="search" class="form-control"/>
           </li>
           <li ng-repeat="file in filteredAssets | filter:search " ng-class="{'list-group-item-success':file.fileDetails.name==selectedAsset[selectedZone]}" ng-click="linkFileSave(file.fileDetails.name)" class="list-group-item">
             <div class="media">
@@ -25,7 +25,7 @@
                   </div>
                   <div class="col-sm-4">
                     <label ng-show="file.fileDetails.type == &quot;video&quot; &amp;&amp; file.fileDetails.name==selectedAsset[selectedZone]" title="Mute video" class="text-muted">
-                      <input type="checkbox" ng-model="file.fileDetails.option[selectedZone]"/><span class="pl-5">mute audio</span>
+                      <input type="checkbox" ng-model="file.fileDetails.option[selectedZone]"/><span class="pl-5">silenciar</span>
                     </label>
                   </div>
                 </div>
@@ -40,7 +40,7 @@
       <tab index="1" heading="Playlists(needs 1.7.0)">
         <ul class="list-group">
           <li class="list-group-item list-group-item-info">
-            <input type="text" placeholder="{{'Filter by Name' }}" ng-model="search" class="form-control"/>
+            <input type="text" placeholder="{{'Filtrar pelo nome' }}" ng-model="search" class="form-control"/>
           </li>
           <li ng-repeat="pl in playlistsList  | filter:search " ng-class="{'list-group-item-success':pl.plName==selectedAsset[selectedZone]}" ng-click="linkFileSave(pl.plName)" class="list-group-item">
             <div class="media">
@@ -54,7 +54,7 @@
                   </div>
                   <div class="col-sm-4">
                     <label ng-show="pl.plName==selectedAsset[selectedZone]" title="Continuously play independent of main zone" class="text-muted">
-                      <input type="checkbox" ng-model="selectedAsset.option[selectedZone]"/><span class="pl-5">play independently</span>
+                      <input type="checkbox" ng-model="selectedAsset.option[selectedZone]"/><span class="pl-5">tocar independentemente</span>
                     </label>
                   </div>
                 </div>
