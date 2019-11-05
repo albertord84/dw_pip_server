@@ -1,12 +1,12 @@
-
-<div class="panel panel-primary">
+<div class="panel panel-info">
   <div class="panel-heading">
     <div class="panel-title">
       <!-- filedetails.name || urlLink.name+urlLink.type || "Google User Account Details" -->
-      Detalhes da conta do usuário Google
-      <button ng-click="delete()" class="btn btn-link btn-sm pull-right"><i class="fa fa-trash fa-lg text-danger"></i></button>
+      {{ filedetails.name || urlLink.name+urlLink.type || "Detalhes da conta do usuário Google" }}
+      <button ng-click="delete()" class="btn btn-danger pull-right"><i class="fa fa-trash fa-lg text-white"></i> Remover</button>&nbsp;&nbsp;<a class="btn btn-primary pull-right text-white mr-3" href="/#/assets/main"><i class="fa fa-arrow-left fa-lg text-white"></i> Cancelar</a>
     </div>
   </div>
+  
   <div class="panel-body"><img ng-if="filedetails.type==&quot;image&quot;" ng-src="{{ filedetails.path }}" class="img-responsive img-rounded"/>
     <video ng-if="filedetails.type==&quot;video&quot;" controls="controls" ng-src="{{ filedetails.path }}" class="img-responsive img-rounded"></video>
     <audio ng-if="filedetails.type==&quot;audio&quot; || filedetails.type==&quot;radio&quot;" controls="controls">
@@ -71,7 +71,7 @@
         </div>
       </div-->
       <div ng-if="urlLink.type == '.mrss'" class="form-group row">
-        <label class="control-label text-muted col-sm-3 text-right"><small><!--Number of Items-->Número de Recursos</small></label>
+        <label class="control-label text-muted col-sm-3 text-right"><small><!--Number of Items-->Número de Conteúdos</small></label>
         <div class="col-sm-3">
           <input type="number" name="count" placeholder="{{&quot;Number of Items to show&quot; }}" ng-model="urlLink.numberOfItems" class="form-control"/>
         </div>

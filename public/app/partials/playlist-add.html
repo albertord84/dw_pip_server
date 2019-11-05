@@ -14,9 +14,53 @@
   <ul as-sortable="sortable.options" ng-model="asset.showAssets.assets" style="min-height:50px;" class="list-group">
     <li ng-repeat="file in asset.showAssets.assets" as-sortable-item="as-sortable-item" style="margin:0px;" ng-class="{&quot;list-group-item-danger&quot;:file.deleted}" class="list-group-item">
       <div as-sortable-item-handle="as-sortable-item-handle" class="row">
-        <div class="col-sm-2"><a ng-click="fn.showDetails(file.fileDetails.name)" class="pull-right"><img ng-if="file.fileDetails.thumbnail" ng-src="{{file.fileDetails.thumbnail}}" class="media-object img-rounded"/>
-            <div ng-if="!file.fileDetails.thumbnail" class="letter-box media-object img-rounded"><span ng-if="file.fileDetails.type == &quot;audio&quot;"><i class="fa fa-music"></i></span><span ng-if="file.fileDetails.type != &quot;audio&quot;">{{file.fileDetails.type.slice(0,1) || 'N'}}</span></div></a></div>
-        <div class="col-sm-10">
+        <div class="col-sm-2">
+          <a ng-click="fn.showDetails(file.fileDetails.name)" class="pull-right">
+            <img ng-if="file.fileDetails.thumbnail" ng-src="{{file.fileDetails.thumbnail}}" class="media-object img-rounded"/>
+            <div ng-if="!file.fileDetails.thumbnail" class="letter-box media-object img-rounded">
+              <span ng-if="file.fileDetails.type == &quot;audio&quot;">
+                <i class="fa fa-music"></i>
+              </span>
+              <span ng-if="file.fileDetails.type != &quot;audio&quot;">
+                {{file.fileDetails.type.slice(0,1) || 'N'}}
+              </span>
+            </div>
+          </a>
+        </div>
+        <div class="col-sm-6">
+          <h6>{{file.fileDetails.name }}</h6>
+          <label ng-class="{'label-danger':file.playlistDetails.fullscreen,'label-default':!file.playlistDetails.fullscreen}" class="label">
+            <input type="checkbox" name="fullscreen" ng-model="file.playlistDetails.fullscreen"/><span>&nbsp;mostrar tela cheia</span>
+          </label>
+          <small class="text-primary">
+            Adicionar outro item da zona
+            <span ng-repeat="zone in layoutOtherZones[asset.showAssets.playlist.layout]">
+              <div ng-if="!customZonesPresent || customZonesPresent[zone]" class="btn-group">
+                <button ng-click="linkFile(file.playlistDetails,zone)" class="btn btn-xs btn-info">
+                  <small>
+                    {{zone}}: {{file.playlistDetails[zone]}}&nbsp;
+                  </small>
+                  <i ng-if="!file.playlistDetails[zone]" class="fa fa-paperclip"></i>
+                </button>
+                <a ng-if="file.playlistDetails[zone]" ng-click="removeLinkFile(file,zone)" class="">
+                  <i class="fa fa-times text-danger"></i>
+                </a>
+              </div>
+            </span>
+          </small>
+        </div>
+        <div class="col-sm-4">
+          <a title="{{'Duplicate this asset to add multiple times in the playlist'}}" ng-click="makeCopy(file,$index)" class="btn btn-xs btn-link">
+            <i class="fa fa-copy"></i>
+          </a>
+          <a ng-click="removeAsset($index)" class="">
+            <i class="fa fa-trash text-danger"></i>
+          </a>
+        </div>
+        
+
+
+
           <div class="row">
             <div class="col-sm-8">
               <h6>{{file.fileDetails.name }}</h6>
@@ -28,7 +72,7 @@
               <input type="number" ng-model="file.playlistDetails.duration" min="5" ng-model-options="{ updateOn: 'blur' }" ng-change="saveData()" class="form-control input-sm"/>
             </div>
             <div class="col-sm-1">
-              <button ng-click="removeAsset($index)" class="btn btn-xs btn-warning">X</button>
+              <a ng-click="removeAsset($index)" class=""><i class="fa fa-trash text-danger"></i></a>
             </div>
           </div>
           <div ng-show="asset.showAssets.playlist.layout &amp;&amp; layoutOtherZones[asset.showAssets.playlist.layout].length" class="row">
@@ -37,11 +81,24 @@
                 <input type="checkbox" name="fullscreen" ng-model="file.playlistDetails.fullscreen"/><span>&nbsp;mostrar tela cheia</span>
               </label>
             </div>
-            <div class="col-sm-9"><small class="text-primary">Adicionar outro item da zona<span ng-repeat="zone in layoutOtherZones[asset.showAssets.playlist.layout]">
+            <div class="col-sm-9">
+              <small class="text-primary">
+                Adicionar outro item da zona
+                <span ng-repeat="zone in layoutOtherZones[asset.showAssets.playlist.layout]">
                   <div ng-if="!customZonesPresent || customZonesPresent[zone]" class="btn-group">
-                    <button ng-click="linkFile(file.playlistDetails,zone)" class="btn btn-xs btn-info"><small>{{zone}}: {{file.playlistDetails[zone]}}&nbsp;</small><i ng-if="!file.playlistDetails[zone]" class="fa fa-paperclip"></i></button>
-                    <button ng-if="file.playlistDetails[zone]" ng-click="removeLinkFile(file,zone)" class="btn btn-xs btn-warning">X</button>
-                  </div></span></small></div>
+                    <button ng-click="linkFile(file.playlistDetails,zone)" class="btn btn-xs btn-info">
+                      <small>
+                        {{zone}}: {{file.playlistDetails[zone]}}&nbsp;
+                      </small>
+                      <i ng-if="!file.playlistDetails[zone]" class="fa fa-paperclip"></i>
+                    </button>
+                    <a ng-if="file.playlistDetails[zone]" ng-click="removeLinkFile(file,zone)" class="">
+                      <i class="fa fa-times text-danger"></i>
+                    </a>
+                  </div>
+                </span>
+              </small>
+            </div>
           </div>
           <div class="row">
             <div ng-show="file.fileDetails.muteButtonEnable" class="col-sm-3">
@@ -65,7 +122,11 @@
               </label>
               <input ng-show="file.playlistDetails.option.main" type="number" ng-model="file.playlistDetails.option.subduration" min="1" placeholder="duração de cada slide" ng-model-options="{ debounce: 500 }" class="form-control input-sm"/>
             </div>
-            <div class="col-sm-1 pull-right"><a title="{{'Duplicate this asset to add multiple times in the playlist'}}" ng-click="makeCopy(file,$index)" class="btn btn-xs btn-link"><i class="fa fa-copy"></i></a></div>
+            <div class="col-sm-1 pull-right">
+              <a title="{{'Duplicate this asset to add multiple times in the playlist'}}" ng-click="makeCopy(file,$index)" class="btn btn-xs btn-link">
+                <i class="fa fa-copy"></i>
+              </a>
+            </div>
             <!--span(ng-show="asset.showAssets.playlist.layout != '2bp' && asset.showAssets.playlist.layout != '2bp270'")-->
             <!--        button.btn.btn-xs.btn-info(ng-click="linkFile(file.playlistDetails,'side')")-->
             <!--            span Side Zone:&nbsp; {{file.playlistDetails.side || "Select a file"}}-->

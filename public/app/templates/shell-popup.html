@@ -1,8 +1,15 @@
 
 <div class="modal-header">
-  <h4><span class="text-warning">{{msg.player.statusClass == "text-danger"?"Player está inativo":"Pi Shell"}}</span><span class="pull-right btn-group">
+  <h4>
+    <span class="text-warning">
+      {{msg.player.statusClass == "text-danger"?"Player está inativo":"Pi Shell"}}
+    </span>
+    <span class="pull-right btn-group">
       <button ng-class="msg.player.tvStatus? 'btn-primary':'btn-default'" ng-click="changeTvState(false)" class="btn btn-sm">Tv Ligada</button>
-      <button ng-class="!msg.player.tvStatus? 'btn-primary':'btn-default'" ng-click="changeTvState(true)" class="btn btn-sm">Tv Desligada</button></span></h4><small ng-if="confirmmsg" class="text-danger pull-right">{{confirmmsg}}</small>
+      <button ng-class="!msg.player.tvStatus? 'btn-primary':'btn-default'" ng-click="changeTvState(true)" class="btn btn-sm">Tv Desligada</button>
+    </span>
+  </h4>
+  <small ng-if="confirmmsg" class="text-danger pull-right">{{confirmmsg}}</small>
 </div>
 <div class="modal-body">
   <form name="shellform" ng-submit="execute()">
@@ -13,11 +20,13 @@
       </div><small><i class="text-success">Utilize as setas &nbsp &#8593; &nbsp e &nbsp &#8595; &nbsp para checar o histórico dos Comandos</i></small>
     </div>
   </form>
+
   <div class="alert alert-info">
     <pre ng-if="msg.err"><small class="text-danger">{{msg.err}}</small></pre>
     <pre ng-if="msg.stdout"><small class="text-info">stdout: {{msg.stdout}}</small></pre>
     <pre ng-if="msg.stderr"><small class="text-warning">stderr: {{msg.stderr}}</small></pre>
   </div>
+
   <div class="row">
     <div class="col-sm-10"><a href="#" ng-click="getSnapshot()" class="thumbnail"><img ng-src="{{snapshot.image}}" err-src="/app/img/snapshot.png" ng-class="snapshot.cssClass"/><small>last taken: {{snapshot.lastTaken | date: "MMM dd, hh:mm a"}}</small>
         <button class="btn btn-block btn-success">{{snapshot.buttonTxt}}&nbsp;</button></a></div>
@@ -25,6 +34,7 @@
       <button ng-click="modal.dismiss()" class="btn btn-warning pull-right">Dispensar</button>
     </div>
   </div>
+
 </div>
 <!--.modal-footer
 <button ng-click="modal.dismiss()" class="btn btn-warning">Dismiss</button>

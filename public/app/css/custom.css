@@ -12,7 +12,7 @@ body {
 }
 ul.nav { margin:5px;}
 .height100 {
-    height: 100%;
+    /*height: 100%;*/
 }
 .panel {border: 0px !important; border-radius:0px !important}
 .panel-heading {border-top-left-radius: 0px !important;border-top-right-radius: 0px !important;min-height: 55px;}
@@ -241,7 +241,9 @@ ul.nav { margin:5px;}
 }
 
 
+.text-white { color: white !important; }
 
+.mr-3 { margin-right: 12px !important}
 
 
 .form-control { border-radius: 0px; border-color:#d2d2d2}
@@ -254,3 +256,11 @@ ul.nav { margin:5px;}
 .btn-transparent { background-color: transparent !important}
 
 .btn { border-radius: 0px !important;}
+.btn-success { background-color:#207551; border-color:#207551}
+.btn-success:active,.btn-success:hover { background-color:#27a56f; border-color:#27a56f}
+.btn-danger { background-color:#b52008}
+.btn-danger:active,.btn-danger:hover { background-color:#d9534f; border-color:#d9534f}
+.btn-primary { color: white !important; background-color:#195569; border-color:#195569}
+.btn-primary:active,.btn-primary:hover { background-color:#1d87ab; border-color:#1d87ab}
+.btn-info { background-color: #29674e;    color: white;    border-color: transparent !important;}
+.btn-info:active,.btn-info:hover { color: white;    background-color: #23a06e;    border-color: transparent !important;}

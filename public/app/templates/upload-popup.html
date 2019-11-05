@@ -3,17 +3,17 @@
   <h3 class="text-warning">{{msg.title}} Status    </h3>
 </div>
 <div class="modal-body">
-  <h4>{{msg.msg}}</h4>
+  <h4>Info: {{msg.msg}}</h4>
   <div ng-if="msg.buttonText == 'Continue'">
     <hr/>
     <h5>Selecionar categorias para os arquivos</h5>
     <categories selected-labels="upload.selectedLabels" labels="upload.labels"></categories>
     <form class="form-inline">
       <div class="form-group">
-        <label><small>new</small></label>
-        <input type="text" ng-model="newLabel.name" required="required" class="form-control input-sm"/>
+        <label><small>Nova etiqueta</small></label>
+        <input type="text" ng-model="newLabel.name" required="required" class="form-control"/>
       </div>
-      <button type="submit" ng-click="upload.addLabel()" class="btn btn-success btn-xs"><i class="fa fa-plus"></i></button>
+      <button type="submit" ng-click="upload.addLabel()" class="btn btn-success"><i class="fa fa-plus"></i> Adicionar etiqueta</button>
     </form>
     <div ng-if="msg.error" ng-bind="msg.error" class="text-danger"></div>
   </div>
