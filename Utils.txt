@@ -1,0 +1,17 @@
+## Start Server
+sudo node /root/... server.js
+
+sudo netstat -nlp | grep 3000
+sudo fuser -n tcp -k 3000
+
+
+## Video Inicial Welcome
+welcome.service
+/home/pi/omx.py
+
+    ## Modificacao -> isto para o omx.py
+    /home/pi/start.sh
+    
+    pisignage.service
+    sudo node /root/... server.js
+
