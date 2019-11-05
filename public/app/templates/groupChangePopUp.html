@@ -1,7 +1,7 @@
 
 <div class="modal-header">
   <h4><span>Configurações do Player para o player&nbsp;</span><span>{{selectedPlayer.name || selectedPlayer.localName}}</span>
-    <button ng-click="settingsModal.close()" class="btn btn-info btn-sm pull-right">Concluído</button>
+    <button ng-click="settingsModal.close()" class="btn btn-primary pull-right"><i class="fa fa-check"></i>&nbsp;&nbsp;Concluído</button>
   </h4>
 </div>
 <div class="modal-body">
@@ -26,7 +26,7 @@
   <div class="form-group row">
     <label class="control-label col-sm-7 col-sm-offset-3 text-danger"> Exclua o player da base de dados do servidor</label>
     <div class="col-sm-2">
-      <button ng-click="deregister()" class="btn btn-danger btn-sm pull-right">Excluir</button>
+      <button ng-click="deregister()" class="btn btn-danger pull-right"><i class="fa fa-trash"></i>&nbsp;&nbsp;Excluir</button>
     </div>
   </div>
 </div>

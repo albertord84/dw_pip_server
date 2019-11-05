@@ -3,20 +3,22 @@
   <div class="panel-heading">
     <div class="row">
       <div class="col-sm-3">
-        <h3 class="panel-title">{{group.selectedGroup.name}}</h3>
+        <h3 class="panel-title">Gerenciar grupo {{group.selectedGroup.name}}</h3>
       </div>
       <div class="col-sm-9">
+        <div class="btn-group pull-right"><a ng-click="closeWindow()" class="btn btn-danger pull-right"><i class="fa fa-times"></i>  Fechar</a></div>
+        <br>
+        <br>
         <div class="btn-toolbar pull-right">
           <div class="btn-group"><a ng-click="emergencyMessage()" class="btn btn-default btn-sm"><em class="text-danger">
             Mensagem de Emergência</em></a><a ng-click="groupTicker()" class="btn btn-default btn-sm"><em class="text-danger">Ticker de grupo</em></a><a ng-click="displaySet()" class="btn btn-default btn-sm"><em class="text-danger">Configurações de grupo</em></a></div>
-          <div class="btn-group"><a ng-disabled="!group.selectedGroup.playlists.length" ng-click="deploy()" class="btn btn-success btn-sm">Implantar em {{group.selectedGroup.name}}</a>&nbsp;<br/>
+          <div class="btn-group"><a ng-disabled="!group.selectedGroup.playlists.length" ng-click="deploy()" class="btn btn-success btn-sm">Reproduzir em {{group.selectedGroup.name}}</a>&nbsp;<br/>
             <div class="checkbox-inline">
               <label>
                 <input type="checkbox" ng-model="group.selectedGroup.loadPlaylistOnCompletion"/><small class="text-info">Mudar ao fim<br> do ciclo atual</small>
               </label>
             </div>
           </div>
-          <div class="btn-group"><a ng-click="closeWindow()" class="btn btn-warning btn-sm pull-right">Fechar</a></div>
         </div>
       </div>
     </div>
@@ -43,7 +45,7 @@
         <h5 class="col-sm-8">
           Você pode selecionar playlists adicionais para fins de agendamento / promoção
           <!--a.btn.btn-link(ng-click="collapsed = !collapsed;")<i ng-class="{'fa-chevron-circle-right':collapsed,'fa-chevron-circle-down':!collapsed}" class="fa fa-lg"></i>
-          --><a ng-click="add()" class="btn btn-info btn-xs"><i class="fa fa-lg fa-plus">adicionar</i></a><span ng-show="showMaxErr" class="text-info">&nbsp&nbsp {{'
+          --><a ng-click="add()" class="btn btn-success"><i class="fa fa-plus"></i> Adicionar</a><span ng-show="showMaxErr" class="text-info">&nbsp&nbsp {{'
             Máximo de agendamentos permitidos para playlists (30)'}}</span>
         </h5>
         <div class="col-sm-4">

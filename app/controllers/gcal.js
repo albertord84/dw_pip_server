@@ -21,7 +21,7 @@ var readGcal = function (file) {
         fileContents = JSON.parse(fs.readFileSync(file, 'utf8'));
         oauth2Client.setCredentials(fileContents.tokens);
     } catch (e) {
-        console.log("Unable to set credentials for auth client " + e);
+        console.log("Não habilitado a configurar credenciais para autenticação de cliente  " + e);
     }
     return fileContents;
 }
