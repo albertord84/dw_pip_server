@@ -623,7 +623,7 @@ angular.module('piGroups.controllers', [])
             $scope.group.selectedGroup.deploy = true;
             $scope.updateGroup(function (err,msg) {
                 if (!err) {
-                    piPopup.status({msg: 'Implementado! Requisição foi enviada para todos os Players.', title: 'Reprodução realizada'});
+                    piPopup.status({msg: 'Implementado! Requisição foi enviada para todas as Telas.', title: 'Reprodução realizada'});
                     $scope.needToDeploy = false;
                 } else {
                     piPopup.status({msg: msg, title: 'Reprodução falhou'});

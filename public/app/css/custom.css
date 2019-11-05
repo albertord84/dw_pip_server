@@ -264,3 +264,6 @@ ul.nav { margin:5px;}
 .btn-primary:active,.btn-primary:hover { background-color:#1d87ab; border-color:#1d87ab}
 .btn-info { background-color: #29674e;    color: white;    border-color: transparent !important;}
 .btn-info:active,.btn-info:hover { color: white;    background-color: #23a06e;    border-color: transparent !important;}
+
+.cursor-default {  cursor: default !important; }
+.cursor-pointer {  cursor: pointer !important; }

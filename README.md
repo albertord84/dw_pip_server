@@ -107,12 +107,12 @@ Server code to manage piSignage players in a LAN or Private Network or to setup 
 
 1. Player management  
     - Auto discovery of players in a network  
-    - Monitor Players  
+    - Monitor  Telas  
 
 2. Group management - create groups and assign players to groups  
     - Display settings - 1080p/720p and landscape or portrait mode  
     - Deploy default playlist, scheduled playlists and advt playlist  
-    - Assign Players to Groups  
+    - Assign  Telas to Groups  
 
 3. Assets Management  
     - Upload assets (video,mp3,html/zip,images, links, google calendar feed)  

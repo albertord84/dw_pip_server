@@ -6,10 +6,10 @@ angular.module('dashboard.controllers', [])
         var BUCKET_INTERVALS = [5,60,240,24 * 60, 7 * 24 * 60];
 
         $scope.COUNT_FIELDS = [
-            {field:"groupName",name:"Grupo wise"},
+            {field:"groupName",name:"Grupo principal"},
             {field:"currentPlaylist",name:"Playlists tocando"},
             {field:"version",name:"Versão do Software"},
-            {field:"locationName",name:"Localização wise"}
+            {field:"locationName",name:"Localização principal"}
         ]
 
         $scope.playersStatFieldWise = {}

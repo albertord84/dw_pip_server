@@ -8,13 +8,13 @@
                         .p-a.text-white
                             span.statcard-desc {{BUCKET_TITLE[$index]}}
                             h2.statcard-number {{bucket}}
-    .panel-heading   Players expected to report now
+    .panel-heading    Telas expected to report now
     .panel-body(style="max-height:200px;overflow-y:scroll")
             h4.text-center(ng-repeat="player in playersExpectedToReport | orderBy:'lastReported':true track by $index") {{player.name }}:&nbsp;
                 i.text-muted {{player.lastReported | timeAgo}}
             h6.text-center.text-muted(ng-show="playersExpectedToReport.length == 0") There are no players went offline just now
             
-    .panel-heading   Players expected to report now
+    .panel-heading    Telas expected to report now
     .panel-body
         .row
             .col-md-6.m-b-md(ng-repeat-start="playerTable in COUNT_FIELDS_TO_SHOW" )

@@ -3,7 +3,7 @@
   <div class="panel-heading">
     <div class="row">
       <div class="col-sm-8">
-        <h3 class="panel-title">{{playlist.selectedPlaylist.name}}<a ng-click="collapsed = !collapsed;" class="btn btn-link"><i ng-class="{'fa-carret-right':collapsed,'fa-carret-down':!collapsed}" class="fa fa-lg"></i></a></h3>
+        <h3 class="panel-title">Gerenciar playlist: <b> {{playlist.selectedPlaylist.name}}</b><a ng-click="collapsed = !collapsed;" class="btn btn-link"><i ng-class="{'fa-carret-right':collapsed,'fa-carret-down':!collapsed}" class="fa fa-lg"></i></a></h3>
       </div>
       <div class="col-sm-3"><a ui-sref="home.playlists.playlistAddAssets({playlist:playlist.selectedPlaylist.name})" ui-sref-opts="{reload: true, notify: true}" class="btn btn-success pull-right">Atribuir Conteúdos</a></div>
       <div class="col-sm-1"><a ng-click="closeWindow()" class="pull-right close">&times;</a></div>
@@ -12,7 +12,7 @@
   <div ng-show="!collapsed" class="panel-body">
     <form class="form-horizontal">
       <div class="form-group">
-        <label class="control-label col-sm-4 text-muted">Visual selecionado para a playlist&nbsp;</label>
+        <label class="control-label col-sm-4 text-muted">Layout selecionado para a playlist&nbsp;</label>
         <div class="col-sm-8">
           <div class="btn-group">
             <button ng-click="openLayout ()" class="btn btn-default"><strong>{{playlist.selectedPlaylist.layout}}</strong><span>:{{layouts[playlist.selectedPlaylist.layout].title}}</span></button>

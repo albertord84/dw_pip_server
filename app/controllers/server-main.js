@@ -34,8 +34,8 @@ exports.deploy = function (installation,group, cb) {
 
             Player.find({'group._id': group._id}, function (err, data) {
                 if (err || !data || data.length == 0) {
-                    console.log("Unable to get Players list for deploy,", err);
-                    async_cb("Não há Players associados, "+(err?err:""));
+                    console.log("Unable to get Telas list for deploy,", err);
+                    async_cb("Não há Telas associadas, "+(err?err:""));
                 } else {
                     data.forEach(function (player) {
                         playersToBeSynced[player.cpuSerialNumber] = player;

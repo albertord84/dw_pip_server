@@ -5,42 +5,62 @@
     <div class="row">
   
       <div class="col-sm-12">
+        <span class="pull-right">
+          <form class="input-group">
+            <span class="input-group-addon" id="basic-addon1">
+              <i class="fa fa-search pull-right text-black"></i> 
+            </span> 
+            <input type="text" placeholder="filtro" ng-model="searchFilename" class="form-control"/>
+          </form>
+        </span>
         <h3 class="panel-title">Conteúdos</h3>
         <p>{{assetConfig.assets.assets.length}} Arquivos ao&nbsp;{{!assetConfig.allAssets && playlist.selectedPlaylist.name || "total"}}</p>
       </div>
   
-      <div class="col-sm-2"><span ng-attr-title="Click this button to select, edit and add labels" class="btn-group">
-          <a ng-click="loadCategory()" class="text-black"><i class="fa fa-tags">&nbsp;</i><span>{{label.selectedLabel.trunc(10) || "Etiquetas"}}</span></a>
-          <button ng-show="label.selectedLabel" ng-click="label.selectedLabel=null;" class="btn btn-primary">Mostrar tudo <i class="fa fa-close"></i></button></span>
+      <div class="col-sm-12">
+
+        <span ng-attr-title="Click this button to select, edit and add labels" class="btn-group pull-right">
+          <a ng-click="loadCategory()" class="btn btn-info btn-sm">
+            <i class="fa fa-tags">&nbsp;</i>
+            <span>{{label.selectedLabel.trunc(10) || "Etiquetas"}}</span>
+          </a>
+          <button ng-show="label.selectedLabel" ng-click="label.selectedLabel=null;" class="btn btn-info btn-sm">
+            Mostrar tudo <i class="fa fa-close"></i>
+          </button>
+        </span>
+
+        <div dropdown="dropdown" ng-if="!assetConfig.allAssets" class="dropdown pull-right">
+          <a dropdown-toggle="dropdown-toggle" class="dropdown-toggle btn btn-info btn-sm  mr-3 pull-right"><i class="fa fa-plus"></i>&nbsp;Adicionar</a>
+          <br>
+          <ul role="menu" class="dropdown-menu">
+            <li class="text-left">
+              <nodeims-file-upload onstart="upload.onstart()" onprogress="upload.onprogress(percentDone)" onerror="upload.onerror(files, type, msg)" ondone="upload.ondone(files, data)" class="text-left" style="padding: 3px 20px; color: #333 !important">Subir arquivos</nodeims-file-upload>
+            </li>
+            <li><a ng-click="link.showPopup()" class="btn-block">Adicionar um Link</a></li>
+            <li><a ng-click="link.showPopup('txt')" class="btn-block">Adicionar uma mensagem</a></li>
+            <li><a ng-click="link.showPopup('local')" title="{{'You can local folder/file here'}}" class="btn-block">Adicionar uma pasta/arquivo local</a></li>
+          </ul>
+        </div>
+
+        <div ng-if="!assetConfig.allAssets" class="pull-right">
+          <a ng-click="fn.edit()" class="btn btn-info btn-sm mr-3">
+            <i class="fa fa-pencil"></i>&nbsp;Editar
+          </a>
+        </div>
+
+        <div ng-hide="!ngDropdown.selectedAssets.length" class="pull-right">
+          <div class="btn-group-xs pull-right"><a ng-if="assetConfig.allAssets" ng-click="ngDropdown.playlist.events.onItemSelect()" class="btn btn-success"><i class="fa fa-lg fa-arrow-circle-right">atribuir</i></a><a ng-click="ngDropdown.clearCheckboxes()" class="btn btn-link"><i class="fa fa-times text-black fa-lg"></i></a></div>
+          <div ng-if="!assetConfig.allAssets" ng-dropdown-multiselect="" options="ngDropdown.label.Label.labels" selected-model="ngDropdown.label.selectedLabels" events="ngDropdown.label.events" translation-texts="ngDropdown.label.customTexts" extra-settings="ngDropdown.label.extraSettings" checkboxes="true" class="pull-right"></div>
+        </div>
+
       </div>
   
-      <div dropdown="dropdown" ng-if="!assetConfig.allAssets" class="col-sm-2 dropdown">
-        <a dropdown-toggle="dropdown-toggle" class="dropdown-toggle text-black pull-right"><i class="fa fa-plus"></i>&nbsp;Adicionar</a>
-        <br>
-        <ul role="menu" class="dropdown-menu">
-          <li class="text-left">
-            <nodeims-file-upload onstart="upload.onstart()" onprogress="upload.onprogress(percentDone)" onerror="upload.onerror(files, type, msg)" ondone="upload.ondone(files, data)" class="text-left" style="padding: 3px 20px; color: #333 !important">Subir arquivos</nodeims-file-upload>
-          </li>
-          <li><a ng-click="link.showPopup()" class="btn-block">Adicionar um Link</a></li>
-          <li><a ng-click="link.showPopup('txt')" class="btn-block">Adicionar uma mensagem</a></li>
-          <li><a ng-click="link.showPopup('local')" title="{{'You can local folder/file here'}}" class="btn-block">Adicionar uma pasta/arquivo local</a></li>
-        </ul>
-      </div>
+      
 
-      <div class="col-sm-2" ng-if="!assetConfig.allAssets"><a ng-click="fn.edit()" class="text-black"><i class="fa fa-pencil"></i>&nbsp;Editar</a></div>
-      <div class="col-sm-4">
-        <form class="input-group">
-              <span class="input-group-addon" id="basic-addon1">
-                <i class="fa fa-search pull-right text-black"></i> 
-              </span> 
-              <input type="text" placeholder="filtro" ng-model="searchFilename" class="form-control"/>
-        </form>
-      </div>
+      
+      
 
-      <div ng-hide="!ngDropdown.selectedAssets.length" class="col-sm-2 pull-right">
-        <div class="btn-group-xs pull-right"><a ng-if="assetConfig.allAssets" ng-click="ngDropdown.playlist.events.onItemSelect()" class="btn btn-success"><i class="fa fa-lg fa-arrow-circle-right">atribuir</i></a><a ng-click="ngDropdown.clearCheckboxes()" class="btn btn-link"><i class="fa fa-times text-black fa-lg"></i></a></div>
-        <div ng-if="!assetConfig.allAssets" ng-dropdown-multiselect="" options="ngDropdown.label.Label.labels" selected-model="ngDropdown.label.selectedLabels" events="ngDropdown.label.events" translation-texts="ngDropdown.label.customTexts" extra-settings="ngDropdown.label.extraSettings" checkboxes="true" class="pull-right"></div>
-      </div>
+      
 
     </div>
   </div>
@@ -78,10 +98,10 @@
                   &nbsp;{{file.playlistDetails.side}} &nbsp;{{file.playlistDetails.bottom}}
                 </small>
               </p>
-              <p><small class="text-info">{{file.fileDetails.labels.join(',')}}</small></p>
-              <p><small ng-if="file.fileDetails.resolution.width" class="text-muted">{{file.fileDetails.resolution.width}}x{{file.fileDetails.resolution.height}}</small></p>
+              <p><small class="text-info ">{{file.fileDetails.labels.join(',')}}</small></p>
+              <p><small ng-if="file.fileDetails.resolution.width" class="text-muted cursor-default">{{file.fileDetails.resolution.width}}x{{file.fileDetails.resolution.height}}</small></p>
               <p ng-if="playlist.selectedPlaylist  &amp;&amp; !assetConfig.allAssets" class=""><small class="text-muted"> {{file.playlistDetails.duration}} segundos</small></p>
-              <p><small>{{file.fileDetails.size}}</small></p>
+              <!-- <p><small class="cursor-default">{{file.fileDetails.size}}</small></p> -->
             </div>
             
             <div class="col-sm-3 text-right">
