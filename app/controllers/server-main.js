@@ -30,12 +30,12 @@ exports.deploy = function (installation,group, cb) {
         function (async_cb) {
 
             if (!group.playlists  || group.playlists.length == 0)
-                return async_cb("No Playlists assigned to the Group")
+                return async_cb("Nenhuma Playlists atribuída ao Grupo")
 
             Player.find({'group._id': group._id}, function (err, data) {
                 if (err || !data || data.length == 0) {
-                    console.log("Unable to get Players list for deploy,", err);
-                    async_cb("No Players associated, "+(err?err:""));
+                    console.log("Unable to get Telas list for deploy,", err);
+                    async_cb("Não há Telas associadas, "+(err?err:""));
                 } else {
                     data.forEach(function (player) {
                         playersToBeSynced[player.cpuSerialNumber] = player;
@@ -74,7 +74,7 @@ exports.deploy = function (installation,group, cb) {
                                             if (!cbCalled) {
                                                 if (err) {
                                                     console.log(err)
-                                                    var errMessage = "Unable to copy playlist " + file + " for " + installation
+                                                    var errMessage = "A Playlist não pode ser copiada " + file + " para " + installation
                                                     util.log(errMessage )
                                                     iterative_cb(errMessage);
                                                 } else

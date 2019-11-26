@@ -1,20 +1,36 @@
 <div ng-show="group.selectedGroup" class="panel panel-info">
   <div class="panel-heading">
     <div class="row">
-      <div class="col-sm-3">
-        <h3 class="panel-title">{{group.selectedGroup.name}}</h3>
+      <div class="col-sm-12">
+        <div class="btn-group pull-right">           
+          <div class=""><a ng-click="closeWindow()" title="Fechar gerenciamento do grupo" class="pull-right close">&times;</a></div>
+          <!-- <a ng-click="closeWindow()" class="btn btn-danger pull-right">
+            <i class="fa fa-times" ></i> Fechar
+          </a> -->
+        </div>
+        <h3 class="panel-title">Gerenciar grupo {{group.selectedGroup.name}}</h3>
       </div>
-      <div class="col-sm-9">
+      <div class="col-sm-12">
+        <br>
         <div class="btn-toolbar pull-right">
-          <div class="btn-group"><a ng-click="emergencyMessage()" class="btn btn-default btn-sm"><em class="text-danger">Emergency Message</em></a><a ng-click="groupTicker()" class="btn btn-default btn-sm"><em class="text-danger">Group Ticker</em></a><a ng-click="displaySet()" class="btn btn-default btn-sm"><em class="text-danger">Group Settings</em></a></div>
-          <div class="btn-group"><a ng-disabled="!group.selectedGroup.playlists.length" ng-click="deploy()" class="btn btn-success btn-sm">Deploy to {{group.selectedGroup.name}}</a>&nbsp;<br/>
+          <div class="btn-group">
+            <!-- <a ng-click="emergencyMessage()" class="btn btn-default btn-sm">
+              <em class="text-danger"> Mensagem de Emergência</em>
+            </a>
+            <a ng-click="groupTicker()" class="btn btn-default btn-sm">
+              <em class="text-danger">Ticker de grupo</em>
+            </a> -->
+            <a ng-click="displaySet()" class="btn btn-default btn-sm">
+              <em class="text-danger">Configurações de grupo</em>
+            </a>
+          </div>
+          <div class="btn-group"><a ng-disabled="!group.selectedGroup.playlists.length" ng-click="deploy()" class="btn btn-success btn-sm">Reproduzir em {{group.selectedGroup.name}}</a>&nbsp;<br/>
             <div class="checkbox-inline">
               <label>
-                <input type="checkbox" ng-model="group.selectedGroup.loadPlaylistOnCompletion"/><small class="text-info">Change at the end<br> of current cycle</small>
+                <input type="checkbox" ng-model="group.selectedGroup.loadPlaylistOnCompletion"/><small class="text-info">Mudar ao fim<br> do ciclo atual</small>
               </label>
             </div>
           </div>
-          <div class="btn-group"><a ng-click="closeWindow()" class="btn btn-warning btn-sm pull-right">Close</a></div>
         </div>
       </div>
     </div>
@@ -22,7 +38,7 @@
   <div class="panel-body">
     <form role="form" name="deployform" as-sortable="sortable.options" ng-model="sortable.playlistArray">
       <div class="row form-group">
-        <label class="control-label col-sm-3">Default Playlist for the group</label>
+        <label class="control-label col-sm-3">Lista de reprodução padrão para o grupo</label>
         <div class="col-sm-5">
           <select ng-model="group.selectedGroup.playlists[0].name" ng-options="pl for pl in playlist.normalPlaylistNames track by pl" ng-change="updateGroup()" class="form-control">
             <option value="">--</option>
@@ -31,32 +47,40 @@
         <div class="col-sm-4">
           <div class="checkbox">
             <label>
-              <input type="checkbox" title="Default playlist assets will be played along with selected playlist" ng-model="group.selectedGroup.combineDefaultPlaylist"/><small>Play together with scheduled playlist (v1.7.0+)</small>
+              <input type="checkbox" title="Default playlist assets will be played along with selected playlist" ng-model="group.selectedGroup.combineDefaultPlaylist"/><small>
+                Reproduzir em conjunto com a lista de reprodução programada</small>
             </label>
           </div>
         </div>
       </div>
       <div ng-show="group.selectedGroup.playlists[0].name.length" class="row form-group">
-        <h5 class="col-sm-8">You can select additional Playlists for Scheduling/Advt purposes
-          <!--a.btn.btn-link(ng-click="collapsed = !collapsed;")<i ng-class="{'fa-chevron-circle-right':collapsed,'fa-chevron-circle-down':!collapsed}" class="fa fa-lg"></i>
-          --><a ng-click="add()" class="btn btn-info btn-xs"><i class="fa fa-lg fa-plus">add</i></a><span ng-show="showMaxErr" class="text-info">&nbsp&nbsp {{'Maximum allowed Playlist Schedules (30)'}}</span>
-          
+        <h5 class="col-sm-8">
+          Você pode selecionar playlists adicionais para fins de agendamento / promoção 
+          <!--a.btn.btn-link(ng-click="collapsed = !collapsed;")<i ng-class="{'fa-chevron-circle-right':collapsed,'fa-chevron-circle-down':!collapsed}" class="fa fa-lg"></i> -->
+          <br><br><a ng-click="add()" class="btn btn-success">
+            <i class="fa fa-plus"></i> Adicionar
+          </a>
+          <span ng-show="showMaxErr" class="text-info">&nbsp&nbsp {{'
+            Máximo de agendamentos permitidos para playlists (30)'}}
+          </span>
         </h5>
         
         <div class="col-sm-4">
           <div class="checkbox">
             <label>
-              <input type="checkbox" title="Content from all the eligible playlists will be combined" ng-model="group.selectedGroup.playAllEligiblePlaylists"/><small>Combine content of all scheduled playlists</small>
+              <input type="checkbox" title="Content from all the eligible playlists will be combined" ng-model="group.selectedGroup.playAllEligiblePlaylists"/><small>
+                Combine o conteúdo de todas as playlists agendadas</small>
             </label>
           </div>
           <div class="checkbox">
             <label ng-attr-title="Shuffle content from selected playlists and deploy">
-              <input type="checkbox" ng-model="group.selectedGroup.shuffleContent"/><small>Shuffle content before deploying</small>
+              <input type="checkbox" ng-model="group.selectedGroup.shuffleContent"/><small>
+                Reproduzir aleatoriamente o conteúdo antes da implantação</small>
             </label>
           </div>
           <div ng-show="group.selectedGroup.playAllEligiblePlaylists" class="checkbox">
             <label ng-attr-title="Play content alternatively from selected playlists">
-              <input type="checkbox" ng-model="group.selectedGroup.alternateContent"/><small>Alternate content from selected playlists</small>
+              <input type="checkbox" ng-model="group.selectedGroup.alternateContent"/><small>Conteúdo alternativo das playlists selecionadas</small>
             </label>
           </div>
         </div>
@@ -65,13 +89,13 @@
         <div as-sortable-item-handle="as-sortable-item-handle" class="col-sm-1 text-right">
           <h6>  {{$index+'.'}}</h6>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4"> 
           <select ng-model="pl.name" style="background:#f8f8f8;" ng-options="plitems for plitems in playlist.playlistNames track by plitems" ng-change="updateGroup()" class="form-control">
             <option value="">--</option>
           </select>
         </div>
         <div class="col-sm-1"><small ng-class="{'text-info': (pl.plType == 'regular'), 'text-warning': (pl.plType != 'regular') }">{{pl.plType}}</small></div>
-        <div class="col-sm-5"><a ng-show="pl.name" ng-click="scheduleCalendar(pl)" class="btn btn-link"><i class="fa fa-calendar fa-lg text-info"></i></a><small ng-if="pl.name &amp;&amp; !(pl.settings.durationEnable || pl.settings.timeEnable || pl.settings.weekdays.length || pl.settings.monthdays.length)">Click the icon to Schedule&nbsp;</small><small ng-if="pl.settings.durationEnable">
+        <div class="col-sm-5"><a ng-show="pl.name" ng-click="scheduleCalendar(pl)" class="btn btn-link"><i class="fa fa-calendar fa-lg text-info"></i></a><small ng-if="pl.name &amp;&amp; !(pl.settings.durationEnable || pl.settings.timeEnable || pl.settings.weekdays.length || pl.settings.monthdays.length)">Clique no ícone para agendar&nbsp;</small><small ng-if="pl.settings.durationEnable">
             {{pl.settings.startdate | date:'MMM d': 'UTC'}} -
             {{pl.settings.enddate | date:'MMM d': 'UTC'}} &nbsp&nbsp</small><small ng-if="pl.settings.timeEnable">
             {{pl.settings.starttime | date: 'hh:mm a'}} -

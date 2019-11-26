@@ -42,7 +42,7 @@ angular.module('piGroups.controllers', [])
 
         $scope.fn.delete = function (index) {
             if ($scope.fn.editMode) {
-                piPopup.confirm($scope.group.groups[index].name+" Group", function () {
+                piPopup.confirm($scope.group.groups[index].name, function () {
 
                     $http
                         .delete(piUrls.groups + $scope.group.groups[index]._id)
@@ -70,21 +70,21 @@ angular.module('piGroups.controllers', [])
                         .then(function (response) {
                             var data = response.data;
                             if (!data.success && group.name.indexOf("__player__") != 0) {
-                                errMessages.push("*** " + ("Deploy failed for ") + group.name + ", " + ('reason: ') + data.stat_message);
+                                errMessages.push("*** " + ("Reprodução falhou para ") + group.name + ", " + ('reason: ') + data.stat_message);
                                 //piPopup.status({msg: "Did not deply for "+ group.name + " reason: "+data.stat_message,
                                 //    title: ('Deploy ')});
                             } else {
-                                errMessages.push(("Deploy done for ") + group.name);
+                                errMessages.push(("Reprodução concluída para ") + group.name);
                             }
                             next();
                         }, function (response) {
-                            errMessages.push("*** " + ("Deploy failed for ") + group.name + ", " + ("reason: http post error"));
+                            errMessages.push("*** " + ("Reprodução falhou para ") + group.name + ", " + ("reason: http post error"));
                             next();
                         });
                 })
             }, function (err) {
                 var msg = errMessages.join("\n\n")
-                piPopup.status({msg: msg, title: 'Deploy '});
+                piPopup.status({msg: msg, title: 'Reproduzir '});
             })
         }
 
@@ -107,11 +107,11 @@ angular.module('piGroups.controllers', [])
                             }, function (response) {
                             });
                     } else {
-                        console.log('error in getting playlist details' + data.stat_message);
+                        console.log('erro ao obter detalhes da playlist' + data.stat_message);
                     }
 
                 }, function (response) {
-                    console('error in getting playlist details' + response.status);
+                    console('erro ao obter detalhes da playlist' + response.status);
                 });
         }
 
@@ -125,7 +125,7 @@ angular.module('piGroups.controllers', [])
 
             for (var i = 0; i < $scope.group.groups.length; i++) {
                 if ($scope.group.groups[i].name == $scope.group.groups[index].newname) {
-                    $scope.group.groups[index].newname = "Group exists";
+                    $scope.group.groups[index].newname = "Grupo existe";
                     return;
                 }
             }
@@ -136,12 +136,12 @@ angular.module('piGroups.controllers', [])
                 .success(function (data, status) {
                     if (!data.success) {
                         $scope.group.groups[index].name = oldname;
-                        $scope.group.groups[index].newname = "Could not rename";
+                        $scope.group.groups[index].newname = "Não foi possível renomear";
                     }
                 })
                 .error(function (data, status) {
                     $scope.group.groups[index].name = oldname;
-                    $scope.group.groups[index].newname = "Could not rename";
+                    $scope.group.groups[index].newname = "Não foi possível renomear";
                 });
         }
 
@@ -263,23 +263,23 @@ angular.module('piGroups.controllers', [])
                 if (!playlist.settings || !playlist.settings.weekdays || playlist.settings.weekdays.length >= 7)
                     $scope.weekDaysText[i] = ""
                 else if (playlist.settings.weekdays.length > 0) {
-                    $scope.weekDaysText[i] = "week days: "
+                    $scope.weekDaysText[i] = "dias da semana: "
                     playlist.settings.weekdays.forEach(function (day) {
                         $scope.weekDaysText[i] = $scope.weekDaysText[i] +
                             " " + $scope.ngDropdown.weekdays.list[day - 1].label.slice(0, 2)
                     })
                 } else {
-                    $scope.weekDaysText[i] = "Not Scheduled"
+                    $scope.weekDaysText[i] = "Não programado"
                 }
                 if (!playlist.settings || !playlist.settings.monthdays || playlist.settings.monthdays.length >= 31)
                     $scope.monthDaysText[i] = ""
                 else if (playlist.settings.monthdays.length > 0) {
-                    $scope.monthDaysText[i] = "dates: "
+                    $scope.monthDaysText[i] = "datas: "
                     playlist.settings.monthdays.forEach(function (day) {
                         $scope.monthDaysText[i] = $scope.monthDaysText[i] + day + ','
                     })
                 } else {
-                    $scope.monthDaysText[i] = "Not Scheduled"
+                    $scope.monthDaysText[i] = "Não programado"
                 }
             }
         }
@@ -427,7 +427,7 @@ angular.module('piGroups.controllers', [])
                     showCheckAll: true, showUncheckAll: true,
                     buttonClasses: "btn btn-default group-multiselect"
                 },
-                customTexts: {buttonDefaultText: "Select Days"},
+                customTexts: {buttonDefaultText: "Selecionar Dias"},
                 events: {
                     onSelectAll: function () {
                         $scope.forPlaylist.settings.weekdays = $scope.ngDropdown.weekdays.list.map(function(obj){
@@ -457,7 +457,7 @@ angular.module('piGroups.controllers', [])
                     showCheckAll: true, showUncheckAll: true,
                     buttonClasses: "btn btn-default group-multiselect"
                 },
-                customTexts: {buttonDefaultText: "Select Days"},
+                customTexts: {buttonDefaultText: "Selecionar Dias"},
                 events: {
                     onSelectAll: function () {
                         $scope.forPlaylist.settings.monthdays = $scope.ngDropdown.monthdays.list.map(function(obj){
@@ -623,10 +623,10 @@ angular.module('piGroups.controllers', [])
             $scope.group.selectedGroup.deploy = true;
             $scope.updateGroup(function (err,msg) {
                 if (!err) {
-                    piPopup.status({msg: 'Deployed! Request has been sent to all Players.', title: 'Deploy Success'});
+                    piPopup.status({msg: 'Implementado! Requisição foi enviada para todas as Telas.', title: 'Reprodução realizada'});
                     $scope.needToDeploy = false;
                 } else {
-                    piPopup.status({msg: msg, title: 'Deploy Failed'});
+                    piPopup.status({msg: msg, title: 'Reprodução falhou'});
                 }
             })
         }
@@ -730,7 +730,7 @@ angular.module('piGroups.controllers', [])
             //if (player.statusClass == "text-danger")
             //    return console.log("Player is offline");
             
-            $scope.msg = {player:player,cmd:'',err:"Type a shell command..."};
+            $scope.msg = {player:player,cmd:'',err:"Digite um comando shell..."};
             $scope.modal = $modal.open({
                 templateUrl: '/app/templates/shell-popup.html',
                 scope: $scope
@@ -739,7 +739,7 @@ angular.module('piGroups.controllers', [])
         }
 
         $scope.execute = function() {
-            $scope.msg.err = "Please wait..."
+            $scope.msg.err = "Por favor aguarde..."
             $scope.msg.stderr = null;
             $scope.msg.stdout = null;
             commands.save($scope.msg.cmd); // save commands
@@ -768,14 +768,14 @@ angular.module('piGroups.controllers', [])
         }
 
         $scope.getSnapshot = function() {
-            $scope.snapshot.buttonTxt = "Please Wait";
+            $scope.snapshot.buttonTxt = "Por favor aguarde";
             $http
                 .post(piUrls.snapshot+$scope.msg.player._id)
                 .success(function(data, status) {
                     if (data.success) {
                         $scope.snapshot.image = (data.data.url) + "?" + Date.now()
                         $scope.snapshot.lastTaken = data.data.lastTaken
-                        $scope.snapshot.buttonTxt = "Take Snapshot";
+                        $scope.snapshot.buttonTxt = "Fazer um 'print' da imagem";
                         $scope.snapshot.cssClass = getCssClass(
                             ($scope.msg.player.group && $scope.msg.player.group._id)?$scope.msg.player.group._id:$scope.msg.player.selfGroupId);
                     } else {
@@ -788,7 +788,7 @@ angular.module('piGroups.controllers', [])
         }
 
         $scope.changeTvState = function(flag){
-            $scope.confirmmsg = "Your request has been sent, Please refesh page after 10 sec"
+            $scope.confirmmsg = "Sua solicitação foi enviada. Atualize a página após 10 segundos"
             $http
                 .post(piUrls.pitv+$scope.msg.player._id, {status: flag})
                 .success(function(data,status){
@@ -802,7 +802,7 @@ angular.module('piGroups.controllers', [])
 
         $scope.swUpdate = function(player) {
             if (player.statusClass == "text-danger")
-                return console.log("Player is offline");
+                return console.log("O Player está offline");
             $scope.msg = {player:player,curVer:player.version,
                 newVer:$scope.player.currentVersion.version, beta:$scope.player.currentVersion.beta};
             $scope.modal = $modal.open({
@@ -882,7 +882,7 @@ angular.module('piGroups.controllers', [])
             var player = $scope.selectedPlayer;
             var newGroup = newGroupName || "__player__";
             $scope.selectedGroup = player.group && player.group.name;
-            piPopup.confirm("--Do you want to Change the Group of the Player to "+newGroup, function() {
+            piPopup.confirm("--Deseja alterar o grupo do player para "+newGroup, function() {
                 var index =  $scope.group.groupNames.indexOf(newGroup);
                 if (index == -1) {
                     player.group = {name: newGroup};
@@ -906,7 +906,7 @@ angular.module('piGroups.controllers', [])
         }
 
         $scope.deregister = function() {
-            piPopup.confirm("--Do you want to deregister the player", function() {
+            piPopup.confirm("--Deseja cancelar o registro do player", function() {
                 $http
                     .delete(piUrls.players+$scope.selectedPlayer._id)
                     .success(function(data, status) {
@@ -940,7 +940,7 @@ angular.module('piGroups.controllers', [])
                 showCheckAll: false, showUncheckAll: false,
                 enableSearch: true
             },
-            customTexts: {buttonDefaultText: "Select Categories"},
+            customTexts: {buttonDefaultText: "Selecionar Categorias"},
             events: {
                 onItemSelect: function (label) {
                     if (label)

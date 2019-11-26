@@ -7,12 +7,29 @@ body {
     margin: auto;
     font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
     height:100%;
+    background-color: #ade8d0;
     padding-top:70px;
 }
-
+ul.nav { margin:5px;}
 .height100 {
-    height: 100%;
+    /*height: 100%;*/
 }
+.panel {border: 0px !important; border-radius:0px !important}
+.panel-heading {border-top-left-radius: 0px !important;border-top-right-radius: 0px !important;min-height: 55px;}
+.panel-info>.panel-heading {
+    color: #29674e;
+    background-color: #90d4b8;
+    border-color: transparent !important;
+}
+.panel>.list-group, .panel>.panel-collapse>.list-group {
+    margin: 12px;
+}
+.nav-pills>li>a {
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+.text-black { color: black !important}
+.form-group{padding:5px}
 
 .overflow-hidden {
     overflow:hidden;
@@ -224,13 +241,29 @@ body {
 }
 
 
+.text-white { color: white !important; }
+
+.mr-3 { margin-right: 12px !important}
 
 
-.navbar-default {
-    background-color: #f8f8f8;
-    border: none;
-}
+.form-control { border-radius: 0px; border-color:#d2d2d2}
 
 
+.dropdown-menu, .dropdown-menu > li {text-align:left !important} 
 
+.input-group-addon { background-color: transparent !important; border: transparent !important;}
 
+.btn-transparent { background-color: transparent !important}
+
+.btn { border-radius: 0px !important;}
+.btn-success { background-color:#207551; border-color:#207551}
+.btn-success:active,.btn-success:hover { background-color:#27a56f; border-color:#27a56f}
+.btn-danger { background-color:#b52008}
+.btn-danger:active,.btn-danger:hover { background-color:#d9534f; border-color:#d9534f}
+.btn-primary { color: white !important; background-color:#195569; border-color:#195569}
+.btn-primary:active,.btn-primary:hover { background-color:#1d87ab; border-color:#1d87ab}
+.btn-info { background-color: #29674e;    color: white;    border-color: transparent !important;}
+.btn-info:active,.btn-info:hover { color: white;    background-color: #23a06e;    border-color: transparent !important;}
+
+.cursor-default {  cursor: default !important; }
+.cursor-pointer {  cursor: pointer !important; }

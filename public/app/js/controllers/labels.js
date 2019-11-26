@@ -36,7 +36,7 @@ angular.module('piLabels.controllers', [])
 
             for (var i=0; i <$scope.label.labels.length; i++) {
                 if ($scope.label.labels[i].name == $scope.newLabel.name) {
-                    $scope.newLabel.name = "Label exists";
+                    $scope.newLabel.name = "Etiqueta existe";
                     return;
                 }
             }

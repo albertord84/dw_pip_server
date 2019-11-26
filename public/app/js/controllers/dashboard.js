@@ -6,15 +6,15 @@ angular.module('dashboard.controllers', [])
         var BUCKET_INTERVALS = [5,60,240,24 * 60, 7 * 24 * 60];
 
         $scope.COUNT_FIELDS = [
-            {field:"groupName",name:"Group wise"},
-            {field:"currentPlaylist",name:"Playlists playing"},
-            {field:"version",name:"Software version"},
-            {field:"locationName",name:"Location wise"}
+            {field:"groupName",name:"Grupo principal"},
+            {field:"currentPlaylist",name:"Playlists tocando"},
+            {field:"version",name:"Versão do Software"},
+            {field:"locationName",name:"Localização principal"}
         ]
 
         $scope.playersStatFieldWise = {}
 
-        $scope.BUCKET_TITLE = ["now","Last 60 minutes","Last 4 hours","Today","Last 7 days","> 7 days"]
+        $scope.BUCKET_TITLE = ["agora","60 minutos","4 horas","hoje","7 dias","> 7 dias"]
         $scope.BUCKET_CLASS = ["success","primary","info","warning","light-danger","danger"]
 
         var getPlayers = function() {

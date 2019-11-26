@@ -20,7 +20,7 @@ exports.index = function (req, res) {
         function(next) {
             fs.readdir(config.mediaDir, function (err, data) {
                 if (err) {
-                    next("Error reading media directory: " + err)
+                    next("Erro ao ler diretório da mídia: " + err)
                 } else {
                     files = data.filter(function (file) {
                         return (file.charAt(0) != '_' && file.charAt(0) != '.');
@@ -34,7 +34,7 @@ exports.index = function (req, res) {
         function(next)  {
             Asset.find({}, function (err, data) {
                 if (err) {
-                    util.log("Error reading Asset Collection: "+err);
+                    util.log("Erro ao ler Coleção de Conteúdos: "+err);
                 } else {
                     dbdata = data;
                 }
@@ -45,7 +45,7 @@ exports.index = function (req, res) {
         if (err)
             rest.sendError(res,err);
         else
-            rest.sendSuccess(res, "Sending media directory files: ",
+            rest.sendSuccess(res, "Enviando arquivos do diretório de mídia: ",
                 {files: files, dbdata: dbdata, systemAssets: config.systemAssets})
 
     });
@@ -60,20 +60,20 @@ exports.createFiles = function (req, res) {
     if (req.files)
         files = req.files["assets"]
     else
-        return rest.sendError(res, "There are no files to be uploaded");
+        return rest.sendError(res, "Não há arquivos a serem enviados");
 
     async.each(files, renameFile, function (err) {
         if (err) {
-            var msg = "File rename error after upload: "+err;
+            var msg = "Erro ao renomear arquivo após envio: "+err;
             util.log(msg);
             return rest.sendError(res, msg);
         } else {
-            return rest.sendSuccess(res, ' Successfully uploaded files', data);
+            return rest.sendSuccess(res, ' Arquivos enviados com sucesso', data);
         }
     })
 
     function renameFile(fileObj, next) {
-        console.log("Uploaded file: "+fileObj.path);
+        console.log("Arquivo enviado: "+fileObj.path);
         var filename = fileObj.originalname.replace(config.filenameRegex, '');
 
         if ((filename).match(config.zipfileRegex)) //unzip won't work with spcaces in file name
@@ -114,7 +114,7 @@ exports.getFileDetails = function (req, res) {
         function(next) {
             fs.stat(path.join(config.mediaDir, file), function (err, data) {
                 if (err) {
-                    next('Unable to read file details: '+ err);
+                    next('Os detalhes do arquivo não puderam ser lidos: '+ err);
                 } else {
                     fileData = data;
                     if (file.match(config.imageRegex))
@@ -149,7 +149,7 @@ exports.getFileDetails = function (req, res) {
         function(next) {
             Asset.findOne({name: file}, function (err, data) {
                 if (err) {
-                    util.log("Error reading Asset Collection: " + err);
+                    util.log("Erro ao ler Coleção de recursos: " + err);
                 } else {
                     dbData = data;
                 }
@@ -160,7 +160,7 @@ exports.getFileDetails = function (req, res) {
         if (err)
             rest.sendError(res,err);
         else
-            rest.sendSuccess(res, 'Sending file details',
+            rest.sendSuccess(res, 'Enviando detalhes do arquivo',
                     {
                         name: file,
                         size: ~~(fileData.size / 1000) + ' KB',
@@ -181,7 +181,7 @@ exports.deleteFile = function (req, res) {
         function(next) {
             fs.unlink(path.join(config.mediaDir, file), function (err) {
                 if (err)
-                    next("Unable to delete file " + file + ';' + err)
+                    next("O arquivo não pôde ser removido  " + file + ';' + err)
                 else
                     next()
             })
@@ -189,7 +189,7 @@ exports.deleteFile = function (req, res) {
         function(next) {
             Asset.remove({name: file}, function (err) {
                 if (err)
-                    util.log('unable to delete asset from db,' + file)
+                    util.log('o sistema não pôde ler o arquivo do banco de dados,' + file)
                 next();
             })
         },
@@ -200,7 +200,7 @@ exports.deleteFile = function (req, res) {
             if(file.match(config.videoRegex) || file.match(config.imageRegex)){
                 fs.unlink(thumbnailPath, function (err) {
                     if (err)
-                        util.log('unable to find/delete thumbnail: ' + err)
+                        util.log('incapaz de encontrar/remover miniatura: ' + err)
                     next();
                 })
             } else {
@@ -211,7 +211,7 @@ exports.deleteFile = function (req, res) {
         if (err)
             rest.sendError(res,err);
         else
-            return rest.sendSuccess(res, 'Deleted file successfully', file);
+            return rest.sendSuccess(res, 'Arquivo removido com sucesso', file);
     })
 }
 
@@ -225,7 +225,7 @@ exports.updateAsset = function (req, res) {
             function(next) {
                 fs.rename(path.join(config.mediaDir, oldName), path.join(config.mediaDir, newName), function (err) {
                     if (err) {
-                        next('File rename error: '+ err);
+                        next('Erro ao tentar renomear arquivo: '+ err);
                     } else {
                         next();
                     }
@@ -234,13 +234,13 @@ exports.updateAsset = function (req, res) {
             function(next) {
                 Asset.findOne({name: oldName}, function(err, asset){
                     if (err || !asset) {
-                        util.log('unable to find asset from db,' + oldName)
+                        util.log('não foi possível encontrar o recurso no banco de dados,' + oldName)
                         return next();
                     }
                     asset.name = newName;
                     asset.save(function(err) {
                         if (err)
-                            util.log('unable to save asset after rename,' + oldName)
+                            util.log('não foi possível salvar o recurso após renomear,' + oldName)
                         next();
                     });
                 });
@@ -249,19 +249,19 @@ exports.updateAsset = function (req, res) {
             if (err)
                 rest.sendError(res,err);
             else
-                return rest.sendSuccess(res, 'Successfully renamed file to', newName);
+                return rest.sendSuccess(res, 'Arquivo renomeado para', newName);
         })
     } else if (req.body.dbdata) {
         Asset.load(req.body.dbdata._id, function (err, asset) {
             if (err || !asset) {
-                return rest.sendError(res, 'Categories saving error', err);
+                return rest.sendError(res, 'Erro ao salvar categorias', err);
             } else {
                 asset = _.extend(asset, req.body.dbdata);
                 asset.save(function (err, data) {
                     if (err)
-                        return rest.sendError(res, 'Categories saving error', err);
+                        return rest.sendError(res, 'Erro ao salvar categorias', err);
 
-                    return rest.sendSuccess(res, 'Categories saved', data);
+                    return rest.sendSuccess(res, 'Categorias salvas', data);
                 });
             }
         })
@@ -273,14 +273,14 @@ exports.getCalendar = function (req, res) {
 
     fs.readFile(calFile, 'utf8', function (err, data) {
         if (err || !data)
-            return rest.sendError(res, 'Gcal file read error', err);
+            return rest.sendError(res, 'erro de leitura de arquivo Gcal', err);
 
         var calData = JSON.parse(data);
         require('./gcal').index(calData, function (err, list) {
             if (err) {
-                return rest.sendError(res, 'Gcal error', err);
+                return rest.sendError(res, 'Gcal erro', err);
             } else {
-                return rest.sendSuccess(res, 'Sending calendar details',
+                return rest.sendSuccess(res, 'Enviando detalhes do calendário',
                     {
                         profile: calData.profile,
                         list: _.map(list.items, function (item) {
@@ -304,14 +304,14 @@ exports.updateCalendar = function (req, res) {
 
     fs.readFile(calFile, 'utf8', function (err, data) {
         if (err || !data)
-            return rest.sendError(res, 'Gcal file read error', err);
+            return rest.sendError(res, 'Erro de leitura de arquivo Gcal', err);
         data = JSON.parse(data);
         data.selectedEmail = req.body['email'];
         exports.createAssetFileFromContent(calFile, data, function () {
             if (err)
-                return rest.sendError(res, 'Gcal file write error', err);
+                return rest.sendError(res, 'Erro ao escrever no arquivo Gcal', err);
             else
-                return rest.sendSuccess(res, 'Successfully updated Email');
+                return rest.sendSuccess(res, 'E-mail atualizado com sucesso');
         });
     });
 }
@@ -332,9 +332,9 @@ exports.createLinkFile = function (req, res) {
                 );
         }], function(err) {
                 if (err)
-                    return rest.sendError(res, 'error in creating link file', err);
+                    return rest.sendError(res, 'erro ao criar arquivo de link', err);
                 else
-                    return rest.sendSuccess(res, 'Link file created for the link as ' + details.name + details.type);
+                    return rest.sendSuccess(res, 'Arquivo de link criado para o link como ' + details.name + details.type);
         })
 }
 
@@ -356,9 +356,9 @@ exports.getLinkFileDetails = function (req, res) {
             })
     }], function (err) {
         if (err) {
-            return rest.sendError(res, 'unable to read link file, error:' + err);
+            return rest.sendError(res, 'Não foi possível ler o arquivo de link, error:' + err);
         } else {
-            return rest.sendSuccess(res, 'link file details', retData);
+            return rest.sendSuccess(res, 'detalhes do arquivo de link', retData);
         }
     })
 }
@@ -366,5 +366,5 @@ exports.getLinkFileDetails = function (req, res) {
 exports.updatePlaylist = function (req,res) {
     //req.body contain playlist name and assets, for deleted playlist send playlist name and empty assets
     require('./server-assets').updatePlaylist(req.body.playlist, req.body.assets);
-    return rest.sendSuccess(res, 'asset update has been queued');
+    return rest.sendSuccess(res, 'a atualização do recurso foi agendada');
 }

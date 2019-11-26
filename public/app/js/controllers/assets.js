@@ -214,13 +214,13 @@ angular.module('piAssets.controllers',[])
                 }
                 if (data.success) {
                     $scope.msg = {
-                        msg: "Upload Complete",
+                        msg: "Envio completo",
                         buttonText: "Continue",
                         disable: false
                     };
                 } else {
                     $scope.msg = {
-                        msg: "Upload Error",
+                        msg: "Erro de envio",
                         buttonText: "Dismiss",
                         disable: false
                     };
@@ -229,7 +229,7 @@ angular.module('piAssets.controllers',[])
             onerror: function(files, type, msg) {
                 if (!$scope.modal)
                     $scope.upload.onstart();
-                $scope.msg.msg = 'Upload Error,'+type+': '+ msg;;
+                $scope.msg.msg = 'Erro de envio,'+type+': '+ msg;;
                 $scope.msg.buttonText = 'OK';
                 $scope.msg.disable = false;
             },
@@ -249,7 +249,7 @@ angular.module('piAssets.controllers',[])
                             $scope.newLabel = {};
                             $scope.msg.error = null;
                         } else {
-                            $scope.msg.error = gettext("Category exists");
+                            $scope.msg.error = gettext("Categoria existe");
                         }
                     })
                     .error(function(data, status) {
@@ -264,8 +264,8 @@ angular.module('piAssets.controllers',[])
                     $state.reload();
                     return;
                 }
-                $scope.msg.title = 'Processing in Progress...';
-                $scope.msg.msg = 'Please Wait';
+                $scope.msg.title = 'Processando...';
+                $scope.msg.msg = 'Por favor, aguarde';
                 var fileArray = $scope.uploadedFiles.map(function(file){
                     return ({name:file.name,size:file.size,type:file.type})
                 })
@@ -273,10 +273,10 @@ angular.module('piAssets.controllers',[])
                     .post(piUrls.filespostupload, {files: fileArray, categories: $scope.upload.selectedLabels})
                     .success(function (data, status) {
                         if (data.success) {
-                            $scope.msg.title = 'Queued in for Processing';
-                            $scope.msg.msg = 'If there is a need for conversion, it will take few minutes to appear in assets';
+                            $scope.msg.title = 'Na fila para processamento';
+                            $scope.msg.msg = 'Se houver necessidade de conversão, levará alguns minutos para aparecer nos recursos';
                         } else {
-                            $scope.msg.msg = 'Processing Error: '+data.stat_message;
+                            $scope.msg.msg = 'Processando erro: '+data.stat_message;
                         }
                         $scope.msg.buttonText = 'OK';
                         $scope.msg.disable = false;
@@ -292,14 +292,14 @@ angular.module('piAssets.controllers',[])
 
         //Add link releated for uploading links
         $scope.link = {
-            types: [{name: 'Livestreaming or YouTube', ext: '.tv'},
+            types: [{name: 'Livestreaming ou YouTube', ext: '.tv'},
                 {name: 'Streaming', ext: '.stream'},
                 {name: 'Audio Streaming', ext: '.radio'},
-                {name: 'Web link (shown in iframe)', ext: '.link'},
-                {name: 'Web page (supports cross origin links)', ext: '.weblink'},
+                {name: 'Web link (mostrado em iframe)', ext: '.link'},
+                {name: 'Web page (suporta links cross origin)', ext: '.weblink'},
                 {name: 'Media RSS', ext: '.mrss'},
-                {name: 'Message', ext: '.txt'},
-                {name: 'Local Folder/File', ext: '.local'}
+                {name: 'Mensagem', ext: '.txt'},
+                {name: 'Diretório/Arquivo local', ext: '.local'}
             ],
             obj: {
                 name: null,
@@ -355,7 +355,7 @@ angular.module('piAssets.controllers',[])
                 extraSettings: {displayProp:'name', idProp:'name', externalIdProp:'name',
                     //scrollableHeight: '200px', scrollable: true,
                     showCheckAll:false,showUncheckAll:false  },
-                customTexts: {buttonDefaultText: "Assign Label"},
+                customTexts: {buttonDefaultText: "Atribuir etiqueta"},
                 Label: assetLoader.label,
                 selectedLabels: [],
                 events: {
@@ -411,7 +411,7 @@ angular.module('piAssets.controllers',[])
                 extraSettings: {displayProp:'name', idProp:'name', externalIdProp:'name',
                     closeOnSelect: true,
                     showCheckAll:false,showUncheckAll:false  },
-                customTexts: {buttonDefaultText:($state.current.name.indexOf("home.assets.playlists") == 0)?"AssignTo Playlist":"RemoveFrom Playlist"},
+                customTexts: {buttonDefaultText:($state.current.name.indexOf("home.assets.playlists") == 0)?"Associar à Playlist":"Remover da Playlist"},
                 PlaylistTab: assetLoader.playlist,
                 selectedPlaylists: [],
                 events: {
