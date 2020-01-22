@@ -7,7 +7,8 @@ body {
     margin: auto;
     font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
     height:100%;
-    background-color: #ade8d0;
+    background-color: #f8f8f8;
+    /* background-color: #ade8d0; */
     padding-top:70px;
 }
 ul.nav { margin:5px;}
@@ -267,3 +268,7 @@ ul.nav { margin:5px;}
 
 .cursor-default {  cursor: default !important; }
 .cursor-pointer {  cursor: pointer !important; }
+
+.pis-bgcolor{
+    background-color: #20c7d9;
+}

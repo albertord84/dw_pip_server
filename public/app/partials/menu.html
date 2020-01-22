@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top pis-bgcolor">
   <div class="container">
     <div class="navbar-header">
       <button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed">
@@ -11,15 +11,15 @@
       </a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
-      <ul style="margin-left:20px;" class="nav navbar-nav">
-        <li ng-class="getClass('home.dashboard')">
-          <a ui-sref="home.dashboard" ui-sref-opts="{reload:true}">Painel de Controle</a>
+      <ul style="margin-left:20px;" class="nav navbar-nav navbar-right">
+        <li ng-class="getClass('home.players')">
+          <a ui-sref="home.players.players" ui-sref-opts="{reload: true}"> Telas</a>
         </li>
         <li ng-class="getClass('home.assets')">
           <a ui-sref="home.assets.main" ui-sref-opts="{reload: true}">Conteúdos</a>
         </li>
-        <li ng-class="getClass('home.players')">
-          <a ui-sref="home.players.players" ui-sref-opts="{reload: true}"> Telas</a>
+        <li ng-class="getClass('home.dashboard')">
+          <a ui-sref="home.dashboard" ui-sref-opts="{reload:true}">Estatísticas</a>
         </li>
         <!--li ng-class="getClass('home.license')"><a ui-sref="home.settings" ui-sref-opts="{reload: true}">Configurações</a></li-->
       </ul>
