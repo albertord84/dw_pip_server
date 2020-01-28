@@ -21,6 +21,9 @@
         <li ng-class="getClass('home.dashboard')">
           <a ui-sref="home.dashboard" ui-sref-opts="{reload:true}">Estatísticas</a>
         </li>
+        <li ng-class="getClass('home.help')">
+          <a ui-sref="home.help" ui-sref-opts="{reload: true}"> Ajuda</a>
+        </li>
         <!--li ng-class="getClass('home.license')"><a ui-sref="home.settings" ui-sref-opts="{reload: true}">Configurações</a></li-->
       </ul>
       <button ng-click="launchCastApp()" ng-show="castStatus.devicesAvailable" class="btn btn-link pull-right">

@@ -100,6 +100,18 @@ angular.module('piServerApp', [
             //     }
             // })
             //
+
+            .state("home.help", {
+                //abstract: true,
+                url: "help",
+                views: {
+                    "main": {
+                        templateUrl: 'app/partials/help.html',
+                        controller: 'HelpCtrl'
+                    }
+                }
+            })
+
             .state("home.assets", {
                 abstract: true,
                 url: "assets/",
