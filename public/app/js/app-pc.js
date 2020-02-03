@@ -100,6 +100,18 @@ angular.module('piServerApp', [
             //     }
             // })
             //
+
+            .state("home.help", {
+                //abstract: true,
+                url: "help/",
+                views: {
+                    "main": {
+                        templateUrl: 'app/partials/help.html',
+                        controller: 'HelpCtrl'
+                    }
+                }
+            })
+
             .state("home.assets", {
                 abstract: true,
                 url: "assets/",
@@ -212,6 +224,7 @@ angular.module('piServerApp', [
 
     })
     .run(function ($window,$modal,piUrls,$http, $rootScope,castApi) {
+        console.log('run');
         var currentBrowser = $window.navigator.userAgent.toLowerCase();
         // if(currentBrowser.indexOf('chrome') == -1){
         //     $modal.open({

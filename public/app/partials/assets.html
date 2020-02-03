@@ -8,16 +8,16 @@
         <span class="pull-right">
           <form class="input-group">
             <span class="input-group-addon" id="basic-addon1">
-              <i class="fa fa-search pull-right text-black"></i> 
+              <i class="fa fa-search pull-right"></i> 
             </span> 
-            <input type="text" placeholder="filtro" ng-model="searchFilename" class="form-control"/>
+            <input type="text" placeholder="filtro" ng-model="searchFilename" class="form-control border-0"/>
           </form>
         </span>
         <h3 class="panel-title">Conteúdos</h3>
         <p>{{assetConfig.assets.assets.length}} Arquivos em&nbsp;{{!assetConfig.allAssets && playlist.selectedPlaylist.name || "total"}}</p>
       </div>
   
-      <div class="col-sm-12">
+      <div class="col-sm-12 text-right">
 
         <span ng-attr-title="Click this button to select, edit and add labels" class="btn-group pull-right">
           <a ng-click="loadCategory()" class="btn btn-info btn-sm">
@@ -29,8 +29,11 @@
           </button>
         </span>
 
-        <div dropdown="dropdown" ng-if="!assetConfig.allAssets" class="dropdown pull-right">
-          <a dropdown-toggle="dropdown-toggle" class="dropdown-toggle btn btn-info btn-sm  mr-3 pull-right"><i class="fa fa-plus"></i>&nbsp;Adicionar</a>
+        <div  ng-if="!assetConfig.allAssets" class="pull-right mr-3"> <!--dropdown="dropdown" class="dropdown "-->
+          <nodeims-file-upload onstart="upload.onstart()" onprogress="upload.onprogress(percentDone)" onerror="upload.onerror(files, type, msg)" ondone="upload.ondone(files, data)" class="btn btn-primary btn-sm pull-right text-left" >
+            <i class="fa fa-upload"></i> Adicionar
+          </nodeims-file-upload>
+          <!--a dropdown-toggle="dropdown-toggle" class="dropdown-toggle btn btn-info btn-sm  mr-3 pull-right"><i class="fa fa-plus"></i>&nbsp;Adicionar</a>
           <br>
           <ul role="menu" class="dropdown-menu">
             <li class="text-left">
@@ -39,11 +42,11 @@
             <li><a ng-click="link.showPopup()" class="btn-block">Adicionar um Link</a></li>
             <li><a ng-click="link.showPopup('txt')" class="btn-block">Adicionar uma mensagem</a></li>
             <li><a ng-click="link.showPopup('local')" title="{{'You can local folder/file here'}}" class="btn-block">Adicionar uma pasta/arquivo local</a></li>
-          </ul>
+          </ul-->
         </div>
 
-        <div ng-if="!assetConfig.allAssets" class="pull-right">
-          <a ng-click="fn.edit()" class="btn btn-info btn-sm mr-3">
+        <div ng-if="!assetConfig.allAssets" class="pull-right mr-3">
+          <a ng-click="fn.edit()" class="btn btn-info btn-sm">
             <i class="fa fa-pencil"></i>&nbsp;Editar
           </a>
         </div>
@@ -145,7 +148,7 @@
           </div>
         </div>
         <div class="col-xs-2">
-          <button ng-click="fn.delete($index)" class="btn btn-danger pull-right text-white"><i class="fa fa-trash"></i></button>
+          <button ng-click="fn.delete($index)" class="btn btn-danger pull-right text-white"><i class="fa fa-trash"></i> Remover</button>
         </div>
       </form>
     </li>
