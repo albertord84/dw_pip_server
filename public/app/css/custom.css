@@ -294,8 +294,6 @@ ul.nav { margin:5px;}
 
 .list-group-item {
     border: none;
-<<<<<<< HEAD
-=======
 }
 
 
@@ -303,5 +301,11 @@ ul.nav { margin:5px;}
     border-radius:0px !important;
     background-color: black !important;
     color: white;
->>>>>>> 6f5aed9d59754fccd9fcd65e222db0d5168d6716
+}
+.label-danger {
+    background-color: #ff4687;
+}
+
+.mt-3 {
+    margin-top: 15px;
 }

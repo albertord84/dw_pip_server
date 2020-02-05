@@ -27,7 +27,7 @@
           <div class="btn-group"><a ng-disabled="!group.selectedGroup.playlists.length" ng-click="deploy()" class="btn btn-success btn-sm">Reproduzir em {{group.selectedGroup.name}}</a>&nbsp;<br/>
             <div class="checkbox-inline">
               <label>
-                <input type="checkbox" ng-model="group.selectedGroup.loadPlaylistOnCompletion"/><small class="text-info">Mudar ao fim<br> do ciclo atual</small>
+                <input type="checkbox" ng-model="group.selectedGroup.loadPlaylistOnCompletion"/><small class="text-white">Mudar ao fim<br> do ciclo atual</small>
               </label>
             </div>
           </div>
@@ -53,10 +53,10 @@
           </div>
         </div>
       </div>
-      <div ng-show="group.selectedGroup.playlists[0].name.length" class="row form-group">
+      <!--div ng-show="group.selectedGroup.playlists[0].name.length" class="row form-group">
         <h5 class="col-sm-8">
           Você pode selecionar playlists adicionais para fins de agendamento / promoção 
-          <!--a.btn.btn-link(ng-click="collapsed = !collapsed;")<i ng-class="{'fa-chevron-circle-right':collapsed,'fa-chevron-circle-down':!collapsed}" class="fa fa-lg"></i> -->
+          
           <br><br><a ng-click="add()" class="btn btn-success">
             <i class="fa fa-plus"></i> Adicionar
           </a>
@@ -84,7 +84,7 @@
             </label>
           </div>
         </div>
-      </div>
+      </div-->
       <div ng-repeat="pl in group.selectedGroup.playlists" ng-if="$index &gt; 0" as-sortable-item="as-sortable-item" class="row form-group">
         <div as-sortable-item-handle="as-sortable-item-handle" class="col-sm-1 text-right">
           <h6>  {{$index+'.'}}</h6>

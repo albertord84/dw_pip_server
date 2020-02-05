@@ -224,7 +224,7 @@ angular.module('piServerApp', [
 
     })
     .run(function ($window,$modal,piUrls,$http, $rootScope,castApi) {
-        console.log('run');
+        
         var currentBrowser = $window.navigator.userAgent.toLowerCase();
         // if(currentBrowser.indexOf('chrome') == -1){
         //     $modal.open({

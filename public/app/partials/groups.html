@@ -13,6 +13,14 @@
       </div>
     </div>
   </div>
+  <form name="addform" class="mt-3" ng-submit="fn.add()">
+    <div class="input-group col-xs-12">
+      <input type="text" ng-model="newGroup.name" required="required" class="form-control" placeholder="Adicionar Grupo"/>
+        <span class="input-group-btn">
+            <button type="submit" title="Criar grupo" class="btn btn-info"><i class="fa fa-plus"></i></button>
+        </span>
+    </div>
+  </form>
   <div class="panel-body">
     <ul class="nav nav-pills nav-stacked">
       <li ng-repeat="item in group.groups" ng-class="fn.getClass(item)">
@@ -30,12 +38,5 @@
           </div></a></li>
     </ul>
   </div>
-  <form name="addform" ng-submit="fn.add()">
-    <div class="input-group col-xs-12">
-      <input type="text" ng-model="newGroup.name" required="required" class="form-control" placeholder="Adicionar Grupo"/>
-        <span class="input-group-btn">
-            <button type="submit" title="Criar grupo" class="btn btn-info"><i class="fa fa-plus"></i></button>
-        </span>
-    </div>
-  </form>
+  
 </div>

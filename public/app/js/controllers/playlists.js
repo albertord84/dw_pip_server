@@ -468,7 +468,8 @@ angular.module('piPlaylists.controllers', [])
             $scope.asset.groupWiseAssets[$scope.playlist.selectedPlaylist.name].playlist.assets.forEach(function(item){
                 //if ($scope.asset.groupWiseAssets[$scope.playlist.selectedPlaylist.name].playlist.layout == "1")
                 //    item.fullscreen = true;
-                if (layoutOtherZones[$scope.asset.groupWiseAssets[$scope.playlist.selectedPlaylist.name].playlist.layout].length == 0)
+                console.log(layoutOtherZones[$scope.asset.groupWiseAssets[$scope.playlist.selectedPlaylist.name].playlist.layout].length);
+                if (!layoutOtherZones[$scope.asset.groupWiseAssets[$scope.playlist.selectedPlaylist.name].playlist.layout].length == 0)
                     item.fullscreen = true;
                 if (item.duration < 2)
                     item.duration = 2; //force duration to 2 sec minimum
@@ -476,6 +477,7 @@ angular.module('piPlaylists.controllers', [])
             $http.post(piUrls.playlists + $scope.playlist.selectedPlaylist.name,
                 {assets: $scope.asset.groupWiseAssets[$scope.playlist.selectedPlaylist.name].playlist.assets})
                     .success(function (data, status) {
+                        
                         if (data.success) {
                             if (cb)
                                 cb();
